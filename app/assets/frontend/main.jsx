@@ -1,7 +1,9 @@
+var Index = require('./components/Index.jsx');
+
 var Main = React.createClass({
   render: function(){
     return (
-      <h1>Hello from Main!</h1>
+      <Index />
     )
   }
 });
