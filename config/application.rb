@@ -8,8 +8,6 @@ Bundler.require(*Rails.groups)
 
 module DrRec
   class Application < Rails::Application
-    # allows gem reactify compile jsx to js
-    config.browserify_rails.commandline_options = "-t reactify --extension=\".js.jsx\""
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration should go into files in config/initializers
     # -- all .rb files in that directory are automatically loaded.
@@ -23,5 +21,8 @@ module DrRec
     # config.i18n.default_locale = :de
     # Do not swallow errors in after_commit/after_rollback callbacks.
     config.active_record.raise_in_transactional_callbacks = true
+    # allows gem reactify compile jsx to js
+    config.browserify_rails.commandline_options = "-t reactify --extension=\".js.jsx\""
+    config.browserify_rails.source_map_environments << "development"
   end
 end

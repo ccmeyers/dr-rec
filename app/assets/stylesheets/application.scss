@@ -1,0 +1,14 @@
+@import 'materialize';
+
+.head {
+  background-color: rgb(78,0,255);
+  color: white;
+}
+
+.btn {
+  background-color: rgba(78,0,255,1);
+
+  &:hover {
+    background-color: rgba(78,0,255,0.9);
+  }
+}
