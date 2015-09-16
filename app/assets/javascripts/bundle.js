@@ -20951,7 +20951,7 @@
 	      return _react2['default'].createElement(
 	        'h1',
 	        null,
-	        'Hi from Index externally'
+	        'This is the same code but with webpack and es6'
 	      );
 	    }
 	  }]);
