@@ -1,19 +1,25 @@
 var React = require('react');
 var DoctorActions = require('../actions/DoctorActions.jsx');
+var SpecialtySelect = require('./SpecialtySelect.jsx');
 
 var AddDoc = React.createClass({
+  addSpecialty: function(specialty) {
+    console.log('specialty', specialty);
+    return specialty;
+  },
   addDoctor: function(event) {
     event.preventDefault();
     var first_name = this.refs.firstName.getDOMNode().value;
     var last_name = this.refs.lastName.getDOMNode().value;
     var practice_name = this.refs.practiceName.getDOMNode().value;
-    var specialty = this.refs.specialty.getDOMNode().value;
+    var specialty = this.addSpecialty();
     var drObj = { id: Date.now(), first_name: first_name, last_name: last_name, practice_name: practice_name, specialty: specialty };
+    console.log('drObj', drObj);
     DoctorActions.sendDoc(drObj);
     this.refs.firstName.getDOMNode().value = '';
     this.refs.lastName.getDOMNode().value = '';
     this.refs.practiceName.getDOMNode().value = '';
-    this.refs.specialty.getDOMNode().value = '';
+    // this.refs.specialty.getDOMNode().value = '';
   },
   render: function() {
     return (
@@ -33,7 +39,7 @@ var AddDoc = React.createClass({
               <input placeholder="Name of Practice" ref="practiceName" type="text" className="validate" />
             </div>
             <div className="input-field col s6">
-              <input placeholder="Specialty" ref="specialty" type="text" className="validate" />
+              <SpecialtySelect sendSpecialty={this.addSpecialty}/>
             </div>
           </div>
           <div className="row">
