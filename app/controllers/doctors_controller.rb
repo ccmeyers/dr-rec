@@ -1,7 +1,7 @@
 class DoctorsController < ApplicationController
 
   def index
-    render json: Doctor.all
+    render json: Doctor.order(last_name: :asc).all
   end
 
   def create
