@@ -28,6 +28,10 @@ AppDispatcher.register(function(action){
       _doctors = action.rawDoctors;
       DoctorStore.emitChange();
       break;
+    case ActionTypes.RECEIVED_ONE_DOCTOR:
+      _doctors.unshift(action.rawDoctor);
+      DoctorStore.emitChange();
+      break;
     default:
 
   }

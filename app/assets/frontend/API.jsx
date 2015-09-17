@@ -12,6 +12,19 @@ var API = {
         console.error(this.props.url, status, err.toString());
       }.bind(this)
     });
+  },
+  createDoctor(drObj) {
+    $.ajax({
+      type: 'POST',
+      url:'/doctors',
+      data: drObj,
+      success: function(rawDoctor) {
+        ServerActions.receivedOneDoctor(rawDoctor);
+      }.bind(this),
+      error: function(xhr, status, err) {
+        console.error(this.props.url, status, err.toString());
+      }.bind(this)
+    });
   }
 };
 

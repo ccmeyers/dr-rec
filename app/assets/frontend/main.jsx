@@ -12,21 +12,6 @@ var Main = React.createClass({
       doctorsList: DoctorStore.getAll()
     }
   },
-  addDoc: function(docToAdd){
-    // $.ajax({
-    //   type: 'POST',
-    //   url: '/doctors',
-    //   data: docToAdd,
-    //   success:function(savedDoc) {
-    //     var newList = this.state.doctorsList;
-    //     newList.unshift(savedDoc);
-    //     this.setState({ doctorsList: newList });
-    //   }.bind(this),
-    //   error: function(xhr, status, err) {
-    //     console.error(this.props.url, status, err.toString());
-    //   }.bind(this)
-    // });
-  },
   componentDidMount: function() {
     DoctorActions.getAllDoctors();
     DoctorStore.addChangeListener(this._onChange);
@@ -43,7 +28,7 @@ var Main = React.createClass({
     return (
       <div>
         <Header />
-        <AddDoc addDoctor={this.addDoc} />
+        <AddDoc />
         <DoctorsList doctors={this.state.doctorsList} />
       </div>
     )

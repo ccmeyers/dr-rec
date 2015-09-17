@@ -1,4 +1,5 @@
 var React = require('react');
+var DoctorActions = require('../actions/DoctorActions.jsx');
 
 var AddDoc = React.createClass({
   addDoctor: function(event) {
@@ -8,7 +9,7 @@ var AddDoc = React.createClass({
     var practice_name = this.refs.practiceName.getDOMNode().value;
     var specialty = this.refs.specialty.getDOMNode().value;
     var drObj = { id: Date.now(), first_name: first_name, last_name: last_name, practice_name: practice_name, specialty: specialty };
-    this.props.addDoctor(drObj);
+    DoctorActions.sendDoc(drObj);
     this.refs.firstName.getDOMNode().value = '';
     this.refs.lastName.getDOMNode().value = '';
     this.refs.practiceName.getDOMNode().value = '';

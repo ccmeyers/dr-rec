@@ -7,6 +7,12 @@ var ServerActions = {
       actionType: ActionTypes.RECEIVED_DOCTORS,
       rawDoctors: rawDoctors
     })
+  },
+  receivedOneDoctor(rawDoctor) {
+    AppDispatcher.dispatch({
+      actionType: ActionTypes.RECEIVED_ONE_DOCTOR,
+      rawDoctor: rawDoctor
+    })
   }
 };
 
