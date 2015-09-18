@@ -7,7 +7,7 @@ var DoctorsList = React.createClass({
       return <Doctor key={doctor.id} {...doctor}/>
     });
     return (
-      <div className="container">
+      <div className="">
         <h4>List of Doctors</h4>
         <div className="row">
           {doctors}

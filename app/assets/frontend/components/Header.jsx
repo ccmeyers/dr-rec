@@ -8,7 +8,7 @@ var Header = React.createClass({
           <div className="row">
             <div className="col s12">
               <h3>Recommend a Doctor to Fellow Antlerists</h3>
-              <p>all recommendations are anonymous</p>
+              <p>* all recommendations are anonymous</p>
             </div>
           </div>
         </div>

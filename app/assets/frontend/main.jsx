@@ -3,6 +3,7 @@ var Header = require('./components/Header.jsx');
 var AddDoc = require('./components/AddDoc.jsx');
 var DoctorsList = require('./components/DoctorsList.jsx');
 var DoctorStore = require('./stores/DoctorStore.jsx');
+var DoctorMap = require('./components/DoctorMap.jsx');
 
 var DoctorActions = require('./actions/DoctorActions.jsx');
 
@@ -28,8 +29,17 @@ var Main = React.createClass({
     return (
       <div>
         <Header />
-        <AddDoc />
-        <DoctorsList doctors={this.state.doctorsList} />
+        <div className="container">
+          <AddDoc />
+          <div className="row">
+            <div className="col s6">
+              <DoctorsList doctors={this.state.doctorsList} />
+            </div>
+            <div className="col s6 doctor-map">
+              <DoctorMap />
+            </div>
+          </div>
+        </div>
       </div>
     )
   }

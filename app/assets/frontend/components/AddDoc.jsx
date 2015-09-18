@@ -26,7 +26,7 @@ var AddDoc = React.createClass({
   },
   render: function() {
     return (
-      <div className="container">
+      <div className="">
         <h5>Add a Recommendation</h5>
         <form onSubmit={this.addDoctor}>
           <div className="row">

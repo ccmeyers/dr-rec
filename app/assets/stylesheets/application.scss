@@ -1,5 +1,6 @@
 @import 'materialize';
 @import './dropdown';
+@import './form';
 
 .head {
   background-color: rgb(78,0,255);
@@ -12,4 +13,14 @@
   &:hover {
     background-color: rgba(78,0,255,0.9);
   }
+}
+
+.doctor-map {
+  height: 500px;
+}
+
+.antler-logo {
+  position: absolute;
+  left: -12.5px;
+  top: -12.5px;
 }
