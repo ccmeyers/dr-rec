@@ -3,18 +3,21 @@ var DoctorActions = require('../actions/DoctorActions.jsx');
 var SpecialtySelect = require('./SpecialtySelect.jsx');
 
 var AddDoc = React.createClass({
+  getInitialState: function() {
+    return {
+      sentSpecialty: ''
+    }
+  },
   addSpecialty: function(specialty) {
-    console.log('specialty', specialty);
-    return specialty;
+    this.setState({ sentSpecialty: specialty });
   },
   addDoctor: function(event) {
     event.preventDefault();
     var first_name = this.refs.firstName.getDOMNode().value;
     var last_name = this.refs.lastName.getDOMNode().value;
     var practice_name = this.refs.practiceName.getDOMNode().value;
-    var specialty = this.addSpecialty();
-    var drObj = { id: Date.now(), first_name: first_name, last_name: last_name, practice_name: practice_name, specialty: specialty };
-    console.log('drObj', drObj);
+    var addedSpecialty = this.state.sentSpecialty;
+    var drObj = { id: Date.now(), first_name: first_name, last_name: last_name, practice_name: practice_name, specialty: addedSpecialty };
     DoctorActions.sendDoc(drObj);
     this.refs.firstName.getDOMNode().value = '';
     this.refs.lastName.getDOMNode().value = '';
