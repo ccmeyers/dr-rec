@@ -5,7 +5,9 @@ var SpecialtySelect = require('./SpecialtySelect.jsx');
 var AddDoc = React.createClass({
   getInitialState: function() {
     return {
-      sentSpecialty: ''
+      sentSpecialty: '',
+      latitude: '',
+      longitude: ''
     }
   },
   addSpecialty: function(specialty) {
@@ -13,16 +15,39 @@ var AddDoc = React.createClass({
   },
   addDoctor: function(event) {
     event.preventDefault();
+
+    var address = this.refs.address.getDOMNode().value;
+    this.getLatLng(address);
+
+  },
+  getLatLng: function(address) {
+    var that = this;
+    var geocoder = new google.maps.Geocoder();
+    geocoder.geocode({ 'address': address }, function (results, status) {
+     if (status == google.maps.GeocoderStatus.OK) {
+        that.setState({ latitude: results[0].geometry.location.lat() });
+        that.setState({ longitude: results[0].geometry.location.lng() });
+        that.finishAddDoctor();
+     }
+     else {
+        console.log("Geocoding failed: " + status);
+     }
+    });
+  },
+  finishAddDoctor: function() {
     var first_name = this.refs.firstName.getDOMNode().value;
     var last_name = this.refs.lastName.getDOMNode().value;
     var practice_name = this.refs.practiceName.getDOMNode().value;
     var addedSpecialty = this.state.sentSpecialty;
-    var drObj = { id: Date.now(), first_name: first_name, last_name: last_name, practice_name: practice_name, specialty: addedSpecialty };
+    var address = this.refs.address.getDOMNode().value;
+    var latitude = this.state.latitude;
+    var longitude = this.state.longitude;
+    var drObj = { id: Date.now(), first_name: first_name, last_name: last_name, practice_name: practice_name, specialty: addedSpecialty, address: address, latitude: latitude, longitude: longitude };
     DoctorActions.sendDoc(drObj);
     this.refs.firstName.getDOMNode().value = '';
     this.refs.lastName.getDOMNode().value = '';
     this.refs.practiceName.getDOMNode().value = '';
-    // this.refs.specialty.getDOMNode().value = '';
+    this.refs.address.getDOMNode().value = '';
   },
   render: function() {
     return (
@@ -44,6 +69,9 @@ var AddDoc = React.createClass({
             <div className="input-field col s6">
               <SpecialtySelect sendSpecialty={this.addSpecialty}/>
             </div>
+          </div>
+          <div className="row">
+            <input placeholder="Address" ref="address" type="text" className="validate" />
           </div>
           <div className="row">
             <button type='submit' className='btn right'>Submit</button>
