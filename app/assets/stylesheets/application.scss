@@ -23,4 +23,11 @@
   position: absolute;
   left: -12.5px;
   top: -12.5px;
+  z-index: 1;
+}
+
+.marker {
+  position: absolute;
+  left: -10px;
+  top: -30px;
 }

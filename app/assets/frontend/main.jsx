@@ -36,7 +36,7 @@ var Main = React.createClass({
               <DoctorsList doctors={this.state.doctorsList} />
             </div>
             <div className="col s6 doctor-map">
-              <DoctorMap />
+              <DoctorMap doctors={this.state.doctorsList} />
             </div>
           </div>
         </div>
