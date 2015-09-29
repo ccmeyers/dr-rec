@@ -31,14 +31,7 @@ var Main = React.createClass({
         <Header />
         <div className="container">
           <AddDoc />
-          <div className="row">
-            <div className="col s6">
-              <DoctorsList doctors={this.state.doctorsList} />
-            </div>
-            <div className="col s6 doctor-map">
-              <DoctorMap doctors={this.state.doctorsList} />
-            </div>
-          </div>
+          <DoctorsList doctors={this.state.doctorsList} />
         </div>
       </div>
     )
