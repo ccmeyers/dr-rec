@@ -30,4 +30,13 @@
   position: absolute;
   left: -10px;
   top: -30px;
+  cursor: pointer;
+
+  &:hover {
+    transform: scale(1.1);
+  }
+}
+
+.doctors-list {
+  margin-top: 30px;
 }

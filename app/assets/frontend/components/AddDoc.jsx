@@ -28,6 +28,7 @@ var AddDoc = React.createClass({
         that.setState({ latitude: results[0].geometry.location.lat() });
         that.setState({ longitude: results[0].geometry.location.lng() });
         that.finishAddDoctor();
+        that.toggleForm();
      }
      else {
         console.log("Geocoding failed: " + status);
@@ -49,10 +50,13 @@ var AddDoc = React.createClass({
     this.refs.practiceName.getDOMNode().value = '';
     this.refs.address.getDOMNode().value = '';
   },
+  toggleForm: function() {
+    $('form').slideToggle();
+  },
   render: function() {
     return (
       <div className="">
-        <h5>Add a Recommendation</h5>
+        <h5 id="form-header" onClick={this.toggleForm}>Add a Recommendation</h5>
         <form onSubmit={this.addDoctor}>
           <div className="row">
             <div className="input_field col s6">
