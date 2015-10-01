@@ -75,10 +75,14 @@ var AddDoc = React.createClass({
             </div>
           </div>
           <div className="row">
-            <input placeholder="Address" ref="address" type="text" className="validate" />
+            <div className="col s12">
+              <input placeholder="Address" ref="address" type="text" className="validate" />
+            </div>
           </div>
           <div className="row">
-            <button type='submit' className='btn right'>Submit</button>
+            <div className="col s12">
+              <button type='submit' className='btn right'>Submit</button>
+            </div>
           </div>
         </form>
       </div>
