@@ -6,13 +6,11 @@ var Doctor = React.createClass({
     $('.doctor-card').matchHeight();
   },
   handleOnMouseEnter: function() {
-    console.log('this.props.id', this.props.id);
     var markerId = this.props.id;
     var selectedMarker = document.querySelector('#marker-'+markerId);
     selectedMarker.classList.add('active');
   },
   handleOnMouseLeave: function() {
-    console.log('this.props.id', this.props.id);
     var markerId = this.props.id;
     var selectedMarker = document.querySelector('#marker-'+markerId);
     selectedMarker.classList.remove('active');

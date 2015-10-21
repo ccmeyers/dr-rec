@@ -2,8 +2,14 @@ var React = require('react');
 var Dropdown = require('react-dropdown');
 
 var SpecialtySelect = React.createClass({
+  getInitialState: function() {
+    return {
+      selected: {value: 'Choose Specialty', label: 'Choose Specialty'}
+    }
+  },
   sendSpecialty: function(option) {
     this.props.sendSpecialty(option.label);
+    this.setState({selected: option})
   },
   render: function() {
     var options = [
@@ -71,7 +77,8 @@ var SpecialtySelect = React.createClass({
       }
     ]
 
-    var defaultOption = { value: 'Choose Specialty', label: 'Choose Specialty' };
+    var defaultOption = this.state.selected;
+    
     return (
       <Dropdown options={options} onChange={this.sendSpecialty} value={defaultOption} />
     )
