@@ -3,10 +3,11 @@ var React = require('react');
 var Marker = React.createClass({
   render: function() {
     var style = this.props.$hover ? {transform: 'scale(1.1)'} : {transform: 'scale(1)'};
+    var markerId = "marker-"+this.props.id;
 
     return (
       <div style={style}>
-        <svg className="marker" xmlns="http://www.w3.org/2000/svg" width="20px" height="30px" viewBox="0 0 20 30">
+        <svg className="marker" id={markerId} xmlns="http://www.w3.org/2000/svg" width="20px" height="30px" viewBox="0 0 20 30">
         <g display="none">
         	<path display="inline" d="M519.82,172.891H92.18c-3.35,0-6.109,2.729-6.109,6.1V460c0,3.38,2.76,6.11,6.109,6.11H519.82
         		c3.399,0,6.109-2.73,6.109-6.11V178.99C525.93,175.62,523.21,172.891,519.82,172.891z M512.72,298.63H99.33v-61.08h413.39V298.63
