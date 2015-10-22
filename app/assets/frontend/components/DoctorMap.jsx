@@ -30,6 +30,7 @@ var DoctorMap = React.createClass({
     var markers = this.props.doctors.map(function(doctor){
       return (
         <Marker
+          specialtySlug = {doctor.specialty_slug}
           id={doctor.id}
           key={doctor.id}
           lat={doctor.latitude}

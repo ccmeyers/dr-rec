@@ -3,10 +3,10 @@
   border: 2px solid rgba(78,0,255,1);
   padding: 10px;
   text-align: center;
-  transition: transform 0.25s ease-in-out;
+  transition: border-color 0.25s ease-in-out;
 
   &:hover {
-    transform: scale(1.01);
+    border-color: #FC2C24;
   }
 }
 

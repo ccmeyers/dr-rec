@@ -1,16 +1,16 @@
 var React = require('react');
 var Dropdown = require('react-dropdown');
 
-var SpecialtySelect = React.createClass({
+var FilterSelect = React.createClass({
   getInitialState: function() {
     return {
-      selected: {value: 'Choose Specialty', label: 'Choose Specialty', slug: ''}
+      selected: {value: 'Filter by Specialty', label: 'Filter by Specialty', slug: ''}
     }
-},
-  sendSpecialty: function(option) {
-    this.props.sendSpecialty(option.label, option.slug);
+  },
+  filterSpecialty: function(option) {
+    this.props.filterSpecialty(option.slug);
     this.setState({selected: option})
-},
+  },
   render: function() {
     var options = [
       {
@@ -80,61 +80,13 @@ var SpecialtySelect = React.createClass({
     var defaultOption = this.state.selected;
 
     return (
-      <Dropdown options={options} onChange={this.sendSpecialty} value={defaultOption} />
+      <div className="row">
+        <div className="input-field col s6">
+          <Dropdown options={options} onChange={this.filterSpecialty} value={defaultOption} />
+        </div>
+      </div>
     )
   }
 });
 
-module.exports = SpecialtySelect;
-
-// <select value="Acupuncturist" ref="specialty">
-//   <option value="Acupuncturist">Acupuncturist</option>
-//   <option value="Allergist (Immunologist)">Allergist (Immunologist)</option>
-//   <option value="Cardiologist (Heart Doctor)">Cardiologist (Heart Doctor)</option>
-//   <option value="Cardiothoracic Surgeon">Cardiothoracic Surgeon</option>
-//   <option value="Chiropractor">Chiropractor</option>
-//   <option value="Dentist">Dentist</option>
-//   <option value="Dermatologist">Dermatologist</option>
-//   <option value="Dietitian / Nutritionist">Dietitian / Nutritionist</option>
-//   <option value="Ear, Nose & Throat Doctor (ENT)">Ear, Nose & Throat Doctor (ENT)</option>
-//   <option value="Endocrinologist (incl Diabetes Specialists)">Endocrinologist (incl Diabetes Specialists)</option>
-//   <option value="Eye Doctor">Eye Doctor</option>
-//   <option value="Gastroenterologist">Gastroenterologist</option>
-//   <option value="Hearing Specialist">Hearing Specialist</option>
-//   <option value="Hematologist (Blood Specialist)">Hematologist (Blood Specialist)</option>
-//   <option value="Infectious Disease Specialist">Infectious Disease Specialist</option>
-//   <option value="Infertility Specialist">Infertility Specialist</option>
-//   <option value="Midwife">Midwife</option>
-//   <option value="Naturopathic Doctor">Naturopathic Doctor</option>
-//   <option value="Nephrologist (Kidney Specialist)">Nephrologist (Kidney Specialist)</option>
-//   <option value="Neurologist (incl Headache Specialists)">Neurologist (incl Headache Specialists)</option>
-//   <option value="Neurosurgeon">Neurosurgeon</option>
-//   <option value="OB-GYN (Obstetrician-Gynecologist)">OB-GYN (Obstetrician-Gynecologist)</option>
-//   <option value="Oncologist">Oncologist</option>
-//   <option value="Ophthalmologist">Ophthalmologist</option>
-//   <option value="Optometrist">Optometrist</option>
-//   <option value="Orthodontist">Orthodontist</option>
-//   <option value="Orthopedic Surgeon (Orthopedist)">Orthopedic Surgeon (Orthopedist)</option>
-//   <option value="Pain Management Specialist">Pain Management Specialist</option>
-//   <option value="Pediatric Dentist">Pediatric Dentist</option>
-//   <option value="Pediatrician">Pediatrician</option>
-//   <option value="Physiatrist (Physical Medicine)">Physiatrist (Physical Medicine)</option>
-//   <option value="Physical Therapist">Physical Therapist</option>
-//   <option value="Plastic Surgeon">Plastic Surgeon</option>
-//   <option value="Podiatrist (Foot and Ankle Specialist)">Podiatrist (Foot and Ankle Specialist)</option>
-//   <option value="Primary Care Doctor">Primary Care Doctor</option>
-//   <option value="Prosthodontist">Prosthodontist</option>
-//   <option value="Psychiatrist">Psychiatrist</option>
-//   <option value="Psychologist">Psychologist</option>
-//   <option value="Pulmonologist (Lung Doctor)">Pulmonologist (Lung Doctor)</option>
-//   <option value="Radiologist">Radiologist</option>
-//   <option value="Rheumatologist">Rheumatologist</option>
-//   <option value="Sleep Medicine Specialist">Sleep Medicine Specialist</option>
-//   <option value="Sports Medicine Specialist">Sports Medicine Specialist</option>
-//   <option value="Surgeon">Surgeon</option>
-//   <option value="Therapist / Counselor">Therapist / Counselor</option>
-//   <option value="Urgent Care Doctor">Urgent Care Doctor</option>
-//   <option value="Urological Surgeon">Urological Surgeon</option>
-//   <option value="Urologist">Urologist</option>
-//   <option value="Vascular Surgeon">Vascular Surgeon</option>
-// </select>
+module.exports = FilterSelect;

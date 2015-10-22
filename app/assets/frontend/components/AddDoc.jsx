@@ -6,12 +6,13 @@ var AddDoc = React.createClass({
   getInitialState: function() {
     return {
       sentSpecialty: '',
+      specialtySlug: '',
       latitude: '',
       longitude: ''
     }
   },
-  addSpecialty: function(specialty) {
-    this.setState({ sentSpecialty: specialty });
+  addSpecialty: function(specialty, slug) {
+    this.setState({ sentSpecialty: specialty, specialtySlug: slug });
   },
   addDoctor: function(event) {
     event.preventDefault();
@@ -40,10 +41,11 @@ var AddDoc = React.createClass({
     var last_name = this.refs.lastName.getDOMNode().value;
     var practice_name = this.refs.practiceName.getDOMNode().value;
     var addedSpecialty = this.state.sentSpecialty;
+    var addedSpecialtySlug = this.state.specialtySlug;
     var address = this.refs.address.getDOMNode().value;
     var latitude = this.state.latitude;
     var longitude = this.state.longitude;
-    var drObj = { id: Date.now(), first_name: first_name, last_name: last_name, practice_name: practice_name, specialty: addedSpecialty, address: address, latitude: latitude, longitude: longitude };
+    var drObj = { id: Date.now(), first_name: first_name, last_name: last_name, practice_name: practice_name, specialty: addedSpecialty, specialtySlug: addedSpecialtySlug, address: address, latitude: latitude, longitude: longitude };
     DoctorActions.sendDoc(drObj);
     this.refs.firstName.getDOMNode().value = '';
     this.refs.lastName.getDOMNode().value = '';
@@ -56,7 +58,11 @@ var AddDoc = React.createClass({
   render: function() {
     return (
       <div className="">
-        <h5 id="form-header" onClick={this.toggleForm}>Add a Recommendation</h5>
+        <div className="row">
+          <div className="col s6 offset-s6">
+            <h5 id="form-header" onClick={this.toggleForm}>Add a Recommendation</h5>
+          </div>
+        </div>
         <form onSubmit={this.addDoctor}>
           <div className="row">
             <div className="input_field col s6">

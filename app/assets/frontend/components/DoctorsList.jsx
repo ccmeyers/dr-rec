@@ -11,7 +11,6 @@ var DoctorsList = React.createClass({
       <div className="doctors-list row">
         <div className="col s6">
           <div className="">
-            <h4>List of Doctors</h4>
             <div className="row">
               {doctors}
             </div>
