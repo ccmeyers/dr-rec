@@ -1,0 +1,23 @@
+.upvote {
+
+  .current-upvotes {
+    margin: 10px 0;
+
+    .thumbs-up {
+      margin-right: 10px;
+      vertical-align: middle;
+    }
+
+    .upvote-num {
+      display: inline-block;
+      color: $blue;
+      vertical-align: bottom;
+      font-size: 16px;
+    }
+
+  }
+
+  a {
+    font-size: 16px;
+  }
+}

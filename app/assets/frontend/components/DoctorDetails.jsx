@@ -1,4 +1,5 @@
 var React = require('react');
+var Upvote = require('./Upvote.jsx')
 
 var DoctorDetails = React.createClass({
   render: function() {
@@ -13,6 +14,7 @@ var DoctorDetails = React.createClass({
           <h6 className="website">{this.props.website}</h6>
           <h6 className="phone">{this.props.phone}</h6>
           <h6 className="address">{this.props.address}</h6>
+          <Upvote upvotes={this.props.upvotes} id={this.props.id} />
         </div>
         <div className="col s6">
           <p className="notes">Notes: {this.props.notes}</p>
