@@ -1,12 +1,12 @@
 #form-header {
   cursor: pointer;
-  border: 2px solid rgba(78,0,255,1);
+  border: 2px solid $blue;
   padding: 10px;
   text-align: center;
   transition: border-color 0.25s ease-in-out;
 
   &:hover {
-    border-color: #FC2C24;
+    border-color: $red;
   }
 }
 

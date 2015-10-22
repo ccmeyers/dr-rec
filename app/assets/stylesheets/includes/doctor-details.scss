@@ -1,0 +1,14 @@
+.doctor-details-card {
+  display: none;
+  border: 2px solid $blue;
+
+  a {
+    color: $blue;
+    margin-right: 10px;
+    @include transition(color 0.25s ease-in-out);
+
+    &:hover {
+      color: $red;
+    }
+  }
+}

@@ -1,23 +1,32 @@
 var React = require('react');
 var Doctor = require('./Doctor.jsx');
 var DoctorMap = require('./DoctorMap.jsx');
+var DoctorDetails = require('./DoctorDetails.jsx');
 
 var DoctorsList = React.createClass({
   render: function() {
+    var doctorsDetails = this.props.doctors.map(function(doctor){
+      return <DoctorDetails key={doctor.id} {...doctor}/>
+    });
     var doctors = this.props.doctors.map(function(doctor){
       return <Doctor key={doctor.id} {...doctor}/>
     });
     return (
-      <div className="doctors-list row">
-        <div className="col s6">
-          <div className="">
-            <div className="row">
-              {doctors}
+      <div className="">
+        <div className="doctors-details row">
+          {doctorsDetails}
+        </div>
+        <div className="doctors-list row">
+          <div className="col s6">
+            <div className="">
+              <div className="row">
+                {doctors}
+              </div>
             </div>
           </div>
-        </div>
-        <div className="col s6 doctor-map">
-          <DoctorMap doctors={this.props.doctors} />
+          <div className="col s6 doctor-map">
+            <DoctorMap doctors={this.props.doctors} />
+          </div>
         </div>
       </div>
     )

@@ -1,0 +1,10 @@
+.doctor-card {
+  @include transition(all 0.25s ease-in-out);
+  cursor: pointer;
+
+  &.active,
+  &:hover {
+    background-color: $blue;
+    color: white;
+  }
+}

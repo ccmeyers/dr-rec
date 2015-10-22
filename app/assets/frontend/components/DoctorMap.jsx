@@ -13,7 +13,14 @@ var DoctorMap = React.createClass({
     }
   },
   _onChildClick: function(key, childProps) {
-    console.log('clicking ', key);
+    var doctorId = key,
+        detailsId = "#details-"+doctorId;
+    if ($(detailsId).hasClass('down')) {
+      $(detailsId).slideUp().removeClass('down');
+    } else {
+      $('.down').slideUp().removeClass('down');
+      $(detailsId).slideDown().addClass('down');
+    }
   },
   _onChildMouseEnter: function(key, childProps) {
     $('.doctor-card#'+key).addClass('active');

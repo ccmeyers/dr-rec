@@ -1,59 +1,24 @@
 @import 'materialize';
-@import './dropdown';
-@import './form';
+@import './includes/variables';
+@import './includes/dropdown';
+@import './includes/form';
+@import './includes/doctor-details';
+@import './includes/doctor-map';
+@import './includes/doctor-card';
+@import './includes/doctors-list';
 
 .head {
-  background-color: rgb(78,0,255);
+  background-color: $blue;
   color: white;
 }
 
 .btn {
-  background-color: rgba(78,0,255,1);
-
-  &:hover {
-    background-color: rgba(78,0,255,0.9);
-  }
-}
-
-.doctor-map {
-  height: 500px;
-}
-
-.antler-logo {
-  position: absolute;
-  left: -12.5px;
-  top: -12.5px;
-  z-index: 1;
-}
-
-.marker {
-  position: absolute;
-  left: -10px;
-  top: -30px;
-  cursor: pointer;
+  background-color: $blue;
+  opacity: 1;
   @include transition(all 0.25s ease-in-out);
 
-  &.active,
   &:hover {
-    transform: scale(1.2);
-
-    path {
-      fill: #FC2C24;
-    }
-  }
-}
-
-.doctors-list {
-  margin-top: 30px;
-}
-
-.doctor-card {
-  background-color: rgba(78,0,255,0);
-  @include transition(all 0.25s ease-in-out);
-
-  &.active,
-  &:hover {
-    background-color: rgba(78,0,255,1);
-    color: white;
+    background-color: $blue;
+    opacity: 0.9;
   }
 }
