@@ -1,8 +1,10 @@
 .doctor-details-card {
   display: none;
   border: 2px solid $blue;
+  padding: 15px 10px !important;
 
   a {
+    display: inline-block;
     color: $blue;
     margin-right: 10px;
     @include transition(color 0.25s ease-in-out);

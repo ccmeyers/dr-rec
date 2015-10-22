@@ -10,12 +10,12 @@ var DoctorDetails = React.createClass({
           <h5 className="name">{this.props.first_name} {this.props.last_name}</h5>
           <h6 className="practice">{this.props.practice_name}</h6>
           <h6 className="specialty">{this.props.specialty}</h6>
-          <h6 className="website">Website</h6>
-          <h6 className="phone">Phone</h6>
+          <h6 className="website">{this.props.website}</h6>
+          <h6 className="phone">{this.props.phone}</h6>
           <h6 className="address">{this.props.address}</h6>
         </div>
         <div className="col s6">
-          <p className="notes">Notes: </p>
+          <p className="notes">Notes: {this.props.notes}</p>
           <a href="">Edit</a>
           <a href="">Delete</a>
         </div>

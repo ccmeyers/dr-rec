@@ -42,15 +42,22 @@ var AddDoc = React.createClass({
     var practice_name = this.refs.practiceName.getDOMNode().value;
     var addedSpecialty = this.state.sentSpecialty;
     var addedSpecialtySlug = this.state.specialtySlug;
+    var phone = this.refs.phone.getDOMNode().value;
+    var website = this.refs.website.getDOMNode().value;
+    var notes = this.refs.notes.getDOMNode().value;
     var address = this.refs.address.getDOMNode().value;
     var latitude = this.state.latitude;
     var longitude = this.state.longitude;
-    var drObj = { id: Date.now(), first_name: first_name, last_name: last_name, practice_name: practice_name, specialty: addedSpecialty, specialtySlug: addedSpecialtySlug, address: address, latitude: latitude, longitude: longitude };
+    var drObj = { id: Date.now(), first_name: first_name, last_name: last_name, practice_name: practice_name, specialty: addedSpecialty, specialtySlug: addedSpecialtySlug, phone: phone, website: website, notes: notes, address: address, latitude: latitude, longitude: longitude };
+    console.log('drObj', drObj);
     DoctorActions.sendDoc(drObj);
     this.refs.firstName.getDOMNode().value = '';
     this.refs.lastName.getDOMNode().value = '';
     this.refs.practiceName.getDOMNode().value = '';
     this.refs.address.getDOMNode().value = '';
+    this.refs.phone.getDOMNode().value = '';
+    this.refs.website.getDOMNode().value = '';
+    this.refs.notes.getDOMNode().value = '';
   },
   toggleForm: function() {
     $('form').slideToggle();
@@ -81,8 +88,21 @@ var AddDoc = React.createClass({
             </div>
           </div>
           <div className="row">
+            <div className="col s6">
+              <input placeholder="Phone" ref="phone" type="tel" className="validate" />
+            </div>
+            <div className="col s6">
+              <input placeholder="Website" ref="website" type="text" className="validate" />
+            </div>
+          </div>
+          <div className="row">
             <div className="col s12">
               <input placeholder="Address" ref="address" type="text" className="validate" />
+            </div>
+          </div>
+          <div className="row">
+            <div className="col s12">
+              <textarea placeholder="Notes" ref="notes" type="textarea" className="validate materialize-textarea" />
             </div>
           </div>
           <div className="row">
