@@ -6,6 +6,9 @@ var DoctorActions = {
   },
   sendDoc(drObj) {
     API.createDoctor(drObj);
+  },
+  deleteDoc(doctorId) {
+    API.deleteDoctor(doctorId);
   }
 };
 

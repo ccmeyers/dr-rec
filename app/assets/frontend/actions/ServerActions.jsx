@@ -13,6 +13,13 @@ var ServerActions = {
       actionType: ActionTypes.RECEIVED_ONE_DOCTOR,
       rawDoctor: rawDoctor
     })
+  },
+  deletedOneDoctor(rawDoctor) {
+    console.log('rawDoctor inside ServerActions', rawDoctor);
+    AppDispatcher.dispatch({
+      actionType: ActionTypes.DELETED_ONE_DOCTOR,
+      rawDoctor: rawDoctor
+    })
   }
 };
 

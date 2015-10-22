@@ -32,6 +32,12 @@ AppDispatcher.register(function(action){
       _doctors.unshift(action.rawDoctor);
       DoctorStore.emitChange();
       break;
+    case ActionTypes.DELETED_ONE_DOCTOR:
+      _doctors = _doctors.filter(function(obj) {
+        return obj.id !== action.rawDoctor.id
+      });
+      DoctorStore.emitChange();
+      break;
     default:
 
   }

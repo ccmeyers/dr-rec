@@ -25,6 +25,20 @@ var API = {
         console.error(this.props.url, status, err.toString());
       }.bind(this)
     });
+  },
+  deleteDoctor(doctorId) {
+    console.log('doctorId inside API', doctorId);
+    $.ajax({
+      type: 'DELETE',
+      url: '/doctors/'+ doctorId,
+      data: doctorId,
+      success: function(doctorId) {
+        ServerActions.deletedOneDoctor(doctorId);
+      }.bind(this),
+      error: function(xhr, status, err) {
+        console.error(this.props.url, status, err.toString());
+      }.bind(this)
+    });
   }
 };
 

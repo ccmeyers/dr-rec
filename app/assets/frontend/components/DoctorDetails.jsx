@@ -1,5 +1,6 @@
 var React = require('react');
 var Upvote = require('./Upvote.jsx')
+var DeleteDoctor = require('./DeleteDoctor.jsx')
 
 var DoctorDetails = React.createClass({
   render: function() {
@@ -19,7 +20,7 @@ var DoctorDetails = React.createClass({
         <div className="col s6">
           <p className="notes">Notes: {this.props.notes}</p>
           <a href="">Edit</a>
-          <a href="">Delete</a>
+          <DeleteDoctor id={this.props.id}/>
         </div>
       </div>
     )

@@ -49,7 +49,6 @@ var AddDoc = React.createClass({
     var latitude = this.state.latitude;
     var longitude = this.state.longitude;
     var drObj = { id: Date.now(), first_name: first_name, last_name: last_name, practice_name: practice_name, specialty: addedSpecialty, specialty_slug: addedSpecialtySlug, phone: phone, website: website, notes: notes, address: address, latitude: latitude, longitude: longitude };
-    console.log('drObj', drObj);
     DoctorActions.sendDoc(drObj);
     this.refs.firstName.getDOMNode().value = '';
     this.refs.lastName.getDOMNode().value = '';
