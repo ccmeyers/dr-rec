@@ -3,8 +3,16 @@ var Upvote = require('./Upvote.jsx')
 var DeleteDoctor = require('./DeleteDoctor.jsx')
 
 var DoctorDetails = React.createClass({
+  toggleEditForm: function() {
+    var doctorId = this.props.id,
+        doctorDetailsId = "#details-"+ doctorId,
+        editDoctorFormId = "#edit-" + doctorId;
+    $(doctorDetailsId).fadeOut();
+    $(editDoctorFormId).fadeIn();
+  },
   render: function() {
     var detailsId = "details-"+this.props.id;
+    var editId = "edit-"+this.props.id;
 
     return (
       <div className="doctor-details-card col s12" id={detailsId}>
@@ -19,7 +27,7 @@ var DoctorDetails = React.createClass({
         </div>
         <div className="col s6">
           <p className="notes">Notes: {this.props.notes}</p>
-          <a href="">Edit</a>
+          <div className="edit-toggle" onClick={this.toggleEditForm}>Edit</div>
           <DeleteDoctor id={this.props.id}/>
         </div>
       </div>

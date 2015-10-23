@@ -14,7 +14,7 @@ var AddDoc = React.createClass({
   addSpecialty: function(specialty, slug) {
     this.setState({ sentSpecialty: specialty, specialtySlug: slug });
   },
-  addDoctor: function(event) {
+  startAddDoctor: function(event) {
     event.preventDefault();
 
     var address = this.refs.address.getDOMNode().value;
@@ -48,7 +48,7 @@ var AddDoc = React.createClass({
     var address = this.refs.address.getDOMNode().value;
     var latitude = this.state.latitude;
     var longitude = this.state.longitude;
-    var drObj = { id: Date.now(), first_name: first_name, last_name: last_name, practice_name: practice_name, specialty: addedSpecialty, specialty_slug: addedSpecialtySlug, phone: phone, website: website, notes: notes, address: address, latitude: latitude, longitude: longitude };
+    var drObj = { first_name: first_name, last_name: last_name, practice_name: practice_name, specialty: addedSpecialty, specialty_slug: addedSpecialtySlug, phone: phone, website: website, notes: notes, address: address, latitude: latitude, longitude: longitude };
     DoctorActions.sendDoc(drObj);
     this.refs.firstName.getDOMNode().value = '';
     this.refs.lastName.getDOMNode().value = '';
@@ -69,7 +69,7 @@ var AddDoc = React.createClass({
             <h5 id="form-header" onClick={this.toggleForm}>Add a Recommendation</h5>
           </div>
         </div>
-        <form onSubmit={this.addDoctor}>
+        <form onSubmit={this.startAddDoctor}>
           <div className="row">
             <div className="input_field col s6">
               <input placeholder="First Name" ref="firstName" type="text" className="validate" />

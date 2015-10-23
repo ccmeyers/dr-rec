@@ -2,11 +2,15 @@ var React = require('react');
 var Doctor = require('./Doctor.jsx');
 var DoctorMap = require('./DoctorMap.jsx');
 var DoctorDetails = require('./DoctorDetails.jsx');
+var EditDoctor = require('./EditDoctor.jsx')
 
 var DoctorsList = React.createClass({
   render: function() {
-    var doctorsDetails = this.props.doctors.map(function(doctor){
+    var doctorDetails = this.props.doctors.map(function(doctor){
       return <DoctorDetails key={doctor.id} {...doctor}/>
+    });
+    var editDoctor = this.props.doctors.map(function(doctor){
+      return <EditDoctor key={doctor.id} {...doctor}/>
     });
     var doctors = this.props.doctors.map(function(doctor){
       return <Doctor key={doctor.id} {...doctor}/>
@@ -14,7 +18,10 @@ var DoctorsList = React.createClass({
     return (
       <div className="">
         <div className="doctors-details row">
-          {doctorsDetails}
+          {doctorDetails}
+        </div>
+        <div className="edit-form row">
+          {editDoctor}
         </div>
         <div className="doctors-list row">
           <div className="col s6">
