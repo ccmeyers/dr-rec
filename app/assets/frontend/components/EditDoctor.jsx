@@ -92,7 +92,6 @@ var EditDoctor = React.createClass({
     $(doctorDetailsId).fadeIn();
   },
 
-
   render: function() {
     var doctorId = this.props.id,
         editDoctorId = "edit-" + doctorId;
