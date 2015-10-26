@@ -26,6 +26,19 @@ var API = {
       }.bind(this)
     });
   },
+  updateDoctor(drObjEdited) {
+    $.ajax({
+      type: 'PUT',
+      url:'/doctors/'+ drObjEdited.id,
+      data: drObjEdited,
+      success: function(rawDoctor) {
+        ServerActions.editedOneDoctor(rawDoctor);
+      }.bind(this),
+      error: function(xhr, status, err) {
+        console.error(this.props.url, status, err.toString());
+      }.bind(this)
+    });
+  },
   deleteDoctor(doctorId) {
     console.log('doctorId inside API', doctorId);
     $.ajax({

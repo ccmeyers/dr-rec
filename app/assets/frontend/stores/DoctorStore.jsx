@@ -38,6 +38,13 @@ AppDispatcher.register(function(action){
       });
       DoctorStore.emitChange();
       break;
+    case ActionTypes.EDITED_ONE_DOCTOR:
+      _doctors = _doctors.filter(function(obj) {
+        return obj.id !== action.rawDoctor.id
+      });
+      _doctors.unshift(action.rawDoctor);
+      DoctorStore.emitChange();
+      break
     default:
 
   }

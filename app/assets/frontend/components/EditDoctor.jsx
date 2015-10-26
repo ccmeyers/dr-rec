@@ -1,9 +1,11 @@
 var React = require('react');
 var SpecialtySelect = require('./SpecialtySelect.jsx');
+var DoctorActions = require('../actions/DoctorActions.jsx');
 
 var EditDoctor = React.createClass({
   getInitialState: function() {
     return {
+      id: this.props.id,
       first_name: this.props.first_name,
       last_name: this.props.last_name,
       practice_name: this.props.practice_name,
@@ -15,43 +17,43 @@ var EditDoctor = React.createClass({
       address: this.props.address,
       latitude: this.props.latitude,
       longitude: this.props.longitude,
-      addressChanged: false,
-      specialtyChanged: false
+      addressChanged: false
     }
   },
   editFirstName: function() {
     this.setState({first_name: this.refs.firstName.getDOMNode().value});
   },
   editLastName: function() {
-    this.setState({first_name: this.refs.lastName.getDOMNode().value});
+    this.setState({last_name: this.refs.lastName.getDOMNode().value});
   },
   editPractice: function() {
-    this.setState({first_name: this.refs.practiceName.getDOMNode().value});
+    this.setState({practice_name: this.refs.practiceName.getDOMNode().value});
   },
   editPhone: function() {
-    this.setState({first_name: this.refs.phone.getDOMNode().value});
+    this.setState({phone: this.refs.phone.getDOMNode().value});
   },
   editWebsite: function() {
-    this.setState({first_name: this.refs.website.getDOMNode().value});
+    this.setState({website: this.refs.website.getDOMNode().value});
   },
   editNotes: function() {
-    this.setState({first_name: this.refs.notes.getDOMNode().value});
+    this.setState({notes: this.refs.notes.getDOMNode().value});
   },
   editAddress: function() {
     this.setState({addressChanged: true});
   },
-  changeSpecialty: function() {
-    this.setState({specialtyChanged: true});
+  editSpecialty: function(specialty, slug) {
+    this.setState({specialty: specialty, specialty_slug: slug});
   },
-  startEditDoctor: function() {
+  startEditDoctor: function(e) {
+    e.preventDefault();
     var that = this;
 
     if (this.state.addressChanged === true) {
       var address = this.refs.address.getDOMNode().value;
+      that.setState({address: address});
       that.getLatLng(address);
-    }
-    if (this.state.specialtyChanged === true) {
-
+    } else {
+      that.finishEditDoctor();
     }
   },
   getLatLng: function(address) {
@@ -61,8 +63,7 @@ var EditDoctor = React.createClass({
      if (status == google.maps.GeocoderStatus.OK) {
         that.setState({ latitude: results[0].geometry.location.lat() });
         that.setState({ longitude: results[0].geometry.location.lng() });
-        that.finishAddDoctor();
-        that.closeForm();
+        that.finishEditDoctor();
      }
      else {
         console.log("Geocoding failed: " + status);
@@ -70,19 +71,21 @@ var EditDoctor = React.createClass({
     });
   },
   finishEditDoctor: function() {
+    var id = this.state.id;
     var first_name = this.state.first_name;
     var last_name = this.state.last_name;
     var practice_name = this.state.practice_name;
-    // var addedSpecialty = this.state.sentSpecialty;
-    // var addedSpecialtySlug = this.state.specialtySlug;
+    var editedSpecialty = this.state.specialty;
+    var editedSpecialtySlug = this.state.specialty_slug;
     var phone = this.state.phone;
     var website = this.state.website;
     var notes = this.state.notes;
     var address = this.state.address
     var latitude = this.state.latitude;
     var longitude = this.state.longitude;
-    var drObj = { first_name: first_name, last_name: last_name, practice_name: practice_name, specialty: addedSpecialty, specialty_slug: addedSpecialtySlug, phone: phone, website: website, notes: notes, address: address, latitude: latitude, longitude: longitude };
-    DoctorActions.updateDoc(drObj);
+    var drObjEdited = { id: id, first_name: first_name, last_name: last_name, practice_name: practice_name, specialty: editedSpecialty, specialty_slug: editedSpecialtySlug, phone: phone, website: website, notes: notes, address: address, latitude: latitude, longitude: longitude };
+    DoctorActions.updateDoc(drObjEdited);
+    this.closeForm();
   },
   closeForm: function() {
     var doctorId = this.props.id,
@@ -112,7 +115,7 @@ var EditDoctor = React.createClass({
               <input placeholder="Name of Practice" ref="practiceName" type="text" className="validate" defaultValue={this.props.practice_name} onChange={this.editPractice} />
             </div>
             <div className="input-field col s6">
-              <SpecialtySelect sendSpecialty={this.editSpecialty} defaultSpecialty={this.props.specialty} onChange={this.changeSpecialty} />
+              <SpecialtySelect sendSpecialty={this.editSpecialty} defaultSpecialty={this.props.specialty} defaultSpecialtySlug={this.props.specialty_slug} onChange={this.changeSpecialty} />
             </div>
           </div>
           <div className="row">

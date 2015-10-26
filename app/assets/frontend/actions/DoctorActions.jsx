@@ -7,6 +7,9 @@ var DoctorActions = {
   sendDoc(drObj) {
     API.createDoctor(drObj);
   },
+  updateDoc(drObjEdited) {
+    API.updateDoctor(drObjEdited);
+  },
   deleteDoc(doctorId) {
     API.deleteDoctor(doctorId);
   }
