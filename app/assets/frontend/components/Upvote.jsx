@@ -1,8 +1,22 @@
 var React = require('react');
+var DoctorActions = require('../actions/DoctorActions.jsx');
+
 
 var Upvote = React.createClass({
-  handleUpvote: function() {
-    console.log('should add upvote');
+  getInitialState: function() {
+    return {
+      id: this.props.id,
+      upvotes: this.props.upvotes
+    }
+  },
+  handleUpvote: function(e) {
+    e.preventDefault();
+    var newVote = {
+      id: this.state.id,
+      num: this.state.upvotes + 1
+    }
+    console.log('newVote', newVote);
+    DoctorActions.upvote(newVote);
   },
   render: function() {
     return (

@@ -59,11 +59,11 @@ var AddDoc = React.createClass({
     this.refs.notes.getDOMNode().value = '';
   },
   toggleForm: function() {
-    $('form').slideToggle();
+    $('.add-doctor form').slideToggle();
   },
   render: function() {
     return (
-      <div className="">
+      <div className="add-doctor">
         <div className="row">
           <div className="col s6 offset-s6">
             <h5 id="form-header" onClick={this.toggleForm}>Add a Recommendation</h5>

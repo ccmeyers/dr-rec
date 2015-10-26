@@ -10,6 +10,9 @@ var DoctorActions = {
   updateDoc(drObjEdited) {
     API.updateDoctor(drObjEdited);
   },
+  upvote(newVote) {
+    API.upvote(newVote);
+  },
   deleteDoc(doctorId) {
     API.deleteDoctor(doctorId);
   }

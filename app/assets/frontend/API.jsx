@@ -39,8 +39,20 @@ var API = {
       }.bind(this)
     });
   },
+  upvote(newVote) {
+    $.ajax({
+      type: 'PUT',
+      url:'/doctors/'+ newVote.id,
+      data: newVote,
+      success: function(rawDoctor) {
+        ServerActions.editedOneDoctor(rawDoctor);
+      }.bind(this),
+      error: function(xhr, status, err) {
+        console.error(this.props.url, status, err.toString());
+      }.bind(this)
+    });
+  },
   deleteDoctor(doctorId) {
-    console.log('doctorId inside API', doctorId);
     $.ajax({
       type: 'DELETE',
       url: '/doctors/'+ doctorId,
