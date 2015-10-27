@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151022192345) do
+ActiveRecord::Schema.define(version: 20151027151036) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -21,8 +21,8 @@ ActiveRecord::Schema.define(version: 20151022192345) do
     t.string   "last_name"
     t.string   "practice_name"
     t.string   "specialty"
-    t.datetime "created_at",                 null: false
-    t.datetime "updated_at",                 null: false
+    t.datetime "created_at",                          null: false
+    t.datetime "updated_at",                          null: false
     t.string   "address"
     t.float    "latitude"
     t.float    "longitude"
@@ -30,7 +30,11 @@ ActiveRecord::Schema.define(version: 20151022192345) do
     t.string   "phone"
     t.string   "website"
     t.text     "notes"
-    t.integer  "upvotes",        default: 0
+    t.integer  "upvotes",                 default: 0
+    t.string   "aetna_oaepo_silver_2000"
+    t.string   "eyemed_ppo"
+    t.string   "guardian_ppo"
+    t.string   "guardian_dhmo"
   end
 
 end

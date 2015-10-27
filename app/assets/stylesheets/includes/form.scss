@@ -17,8 +17,26 @@ form {
     margin-top: 1rem;
   }
 
-  textarea {
-    // padding: 5px;
+  [type="radio"]:not(:checked) + label,
+  [type="radio"]:checked + label {
+    padding-left: 30px;
+    padding-right: 20px;
+  }
+
+  [type="radio"]:checked + label:after {
+    border-color: $blue;
+    background-color: $blue;
+  }
+
+  .health-coverage {
+
+    .dental {
+      display: none;
+    }
+
+    .vision {
+      display: none;
+    }
   }
 }
 
