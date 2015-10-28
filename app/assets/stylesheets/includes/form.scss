@@ -49,23 +49,27 @@ form {
   }
 }
 
-.edit-doctor {
+.edit-form {
+  margin-bottom: 0;
 
-  form {
+  .edit-doctor {
 
-    .cancel {
-      margin-right: 20px;
-    }
+    form {
 
-    &.hidden {
-      max-height: 0;
-      overflow: hidden;
-      @include transition(all 0.4s ease-out);
-    }
+      .cancel {
+        margin-right: 20px;
+      }
 
-    &.shown {
-      max-height: 1000px;
-      @include transition(all 0.4s ease-out);
+      &.hidden {
+        max-height: 0;
+        overflow: hidden;
+        @include transition(all 0.4s ease-out);
+      }
+
+      &.shown {
+        max-height: 1000px;
+        @include transition(all 0.4s ease-out);
+      }
     }
   }
 }

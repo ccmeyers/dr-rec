@@ -1,29 +1,33 @@
-.doctor-details-card {
+.doctors-details {
+  margin-bottom: 0;
 
-  a,
-  .edit-toggle {
-    display: inline-block;
-    color: $blue;
-    margin-right: 10px;
-    @include transition(color 0.25s ease-in-out);
-    cursor: pointer;
+  .doctor-details-card {
 
-    &:hover {
-      color: $red;
+    a,
+    .edit-toggle {
+      display: inline-block;
+      color: $blue;
+      margin-right: 10px;
+      @include transition(color 0.25s ease-in-out);
+      cursor: pointer;
+
+      &:hover {
+        color: $red;
+      }
     }
-  }
 
-  &.hidden {
-    max-height: 0;
-    overflow: hidden;
-    border: 0px solid rgba(78,0,255,0);
-    @include transition(all 0.4s ease-out);
-  }
+    &.hidden {
+      max-height: 0;
+      overflow: hidden;
+      border: 0px solid rgba(78,0,255,0);
+      @include transition(all 0.4s ease-out);
+    }
 
-  &.shown {
-    max-height: 1000px;
-    border: 2px solid $blue;
-    padding: 15px 10px !important;
-    @include transition(all 0.4s ease-out);
+    &.shown {
+      max-height: 1000px;
+      border: 2px solid $blue;
+      padding: 15px 10px !important;
+      @include transition(all 0.4s ease-out);
+    }
   }
 }

@@ -36,6 +36,7 @@ var Main = React.createClass({
       });
       $('.clear-filters').hide();
     } else {
+      $('.doctor-details-card.shown').removeClass('shown').addClass('hidden');
       var doctorsToShow = [];
       $('.doctor-card').each(function() {
         if ($(this).hasClass(specialtySlug)) {
@@ -45,6 +46,7 @@ var Main = React.createClass({
         }
       });
       if (doctorsToShow.length > 0) {
+        $('.no-doctors').text('');
         doctorsToShow.forEach(function(card) {
           card.show();
         });
