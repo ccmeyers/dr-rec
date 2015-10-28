@@ -14,7 +14,7 @@ var DoctorDetails = React.createClass({
     var detailsId = "details-"+this.props.id;
     var editId = "edit-"+this.props.id;
     var rawWebsite = this.props.website;
-    var websiteUrl = rawWebsite.includes('http://') ? rawWebsite : "http://"+rawWebsite;
+    var websiteUrl = rawWebsite.includes('http://') || rawWebsite.includes('https://') ? rawWebsite : "http://"+rawWebsite;
 
     return (
       <div className="doctor-details-card col s12" id={detailsId}>
