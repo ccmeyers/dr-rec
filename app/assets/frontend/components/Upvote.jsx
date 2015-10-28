@@ -23,7 +23,6 @@ var Upvote = React.createClass({
   componentDidMount: function() {
     if (this.props.upvotes === 0) {
       var thumb = this.refs.currentUpvotes.getDOMNode();
-      console.log('thumb', thumb);
       $(thumb).hide();
     }
   },
