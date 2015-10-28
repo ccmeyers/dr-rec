@@ -25,10 +25,9 @@ var DoctorsList = React.createClass({
         </div>
         <div className="doctors-list row">
           <div className="col s6">
-            <div className="">
-              <div className="row">
-                {doctors}
-              </div>
+            <div className="no-doctors"></div>
+            <div className="row">
+              {doctors}
             </div>
           </div>
           <div className="col s6 doctor-map">

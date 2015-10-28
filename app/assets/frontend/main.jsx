@@ -28,6 +28,7 @@ var Main = React.createClass({
   },
   filterSpecialty: function(specialtySlug) {
     if (specialtySlug === 'clear') {
+      $('.no-doctors').text('');
       $('.doctor-card').show();
       var markers = document.getElementsByClassName('marker');
       [].forEach.call(markers, function(marker) {
@@ -48,7 +49,7 @@ var Main = React.createClass({
           card.show();
         });
       } else {
-        $('.doctors-list .row').text('There are no doctors for this specialty.');
+        $('.no-doctors').text('There are no doctors for this specialty.');
       }
       var markers = document.getElementsByClassName('marker');
       [].forEach.call(markers, function(marker) {
