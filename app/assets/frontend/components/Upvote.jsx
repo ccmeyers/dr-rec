@@ -15,13 +15,22 @@ var Upvote = React.createClass({
       id: this.state.id,
       num: this.state.upvotes + 1
     }
-    console.log('newVote', newVote);
+    this.setState({ upvotes: newVote.num });
     DoctorActions.upvote(newVote);
+    var thumb = this.refs.currentUpvotes.getDOMNode();
+    $(thumb).show();
+  },
+  componentDidMount: function() {
+    if (this.props.upvotes === 0) {
+      var thumb = this.refs.currentUpvotes.getDOMNode();
+      console.log('thumb', thumb);
+      $(thumb).hide();
+    }
   },
   render: function() {
     return (
       <div className="upvote">
-        <div className="current-upvotes">
+        <div className="current-upvotes" ref="currentUpvotes">
           <svg className="thumbs-up" xmlns="http://www.w3.org/2000/svg" width="40px" height="35.799px" viewBox="280.995 296.595 50 45.799"><path fill="#4E00FF" d="M330.984,321.158c-0.111-1.714-1.116-3.182-2.555-3.983c0.331-0.726,0.487-1.542,0.428-2.39
           	c-0.178-2.562-2.374-4.569-5.002-4.569h-8.446c0.092-0.976,0.214-2.353,0.358-4.207c0.526-6.784-3.342-9.082-5.458-9.348
           	c-0.267-0.034-0.56-0.065-0.903-0.065c-1.695,0-3.106,0.791-4.081,2.288c-0.657,1.012-0.613,2.24-0.562,3.661

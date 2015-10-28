@@ -13,6 +13,8 @@ var DoctorDetails = React.createClass({
   render: function() {
     var detailsId = "details-"+this.props.id;
     var editId = "edit-"+this.props.id;
+    var rawWebsite = this.props.website;
+    var websiteUrl = rawWebsite.includes('http://') ? rawWebsite : "http://"+rawWebsite;
 
     return (
       <div className="doctor-details-card col s12" id={detailsId}>
@@ -20,7 +22,7 @@ var DoctorDetails = React.createClass({
           <h5 className="name">{this.props.first_name} {this.props.last_name}</h5>
           <h6 className="practice">{this.props.practice_name}</h6>
           <h6 className="specialty">{this.props.specialty}</h6>
-          <h6 className="website">{this.props.website}</h6>
+          <a href={websiteUrl} target="_blank"><h6 className="website">{rawWebsite}</h6></a>
           <h6 className="phone">{this.props.phone}</h6>
           <h6 className="address">{this.props.address}</h6>
           <Upvote upvotes={this.props.upvotes} id={this.props.id} />
