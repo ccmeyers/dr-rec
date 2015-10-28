@@ -18,11 +18,15 @@ var Doctor = React.createClass({
   handleClick: function() {
     var doctorId = this.props.id,
         detailsId = "#details-"+doctorId;
-    if ($(detailsId).hasClass('down')) {
-      $(detailsId).slideUp().removeClass('down');
+    if ($(detailsId).hasClass('shown')) {
+      $(detailsId).removeClass('shown').addClass('hidden');
+    } else if ($(detailsId).siblings().hasClass('shown')) {
+      $('.shown').removeClass('shown').addClass('hidden');
+      setTimeout(function(){
+        $(detailsId).removeClass('hidden').addClass('shown');
+      }, 400);
     } else {
-      $('.down').slideUp().removeClass('down');
-      $(detailsId).slideDown().addClass('down');
+      $(detailsId).removeClass('hidden').addClass('shown');
     }
   },
   render: function() {

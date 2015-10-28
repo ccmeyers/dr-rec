@@ -140,8 +140,10 @@ var EditDoctor = React.createClass({
     var doctorId = this.props.id,
         doctorDetailsId = "#details-"+ doctorId,
         editDoctorFormId = "#edit-" + doctorId;
-    $(editDoctorFormId).fadeOut();
-    $(doctorDetailsId).fadeIn();
+    $(editDoctorFormId).removeClass('shown').addClass('hidden');
+    setTimeout(function(){
+      $(doctorDetailsId).removeClass('hidden').addClass('shown');
+    }, 300);
   },
 
   render: function() {
@@ -150,7 +152,7 @@ var EditDoctor = React.createClass({
 
     return (
       <div className="edit-doctor" >
-        <form onSubmit={this.startEditDoctor} id={editDoctorId}>
+        <form className="hidden" onSubmit={this.startEditDoctor} id={editDoctorId}>
           <div className="row">
             <div className="input_field col s6">
               <input placeholder="First Name" ref="firstName" type="text" className="validate" defaultValue={this.props.first_name} onChange={this.editFirstName}/>

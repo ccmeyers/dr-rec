@@ -1,7 +1,4 @@
 .doctor-details-card {
-  display: none;
-  border: 2px solid $blue;
-  padding: 15px 10px !important;
 
   a,
   .edit-toggle {
@@ -14,5 +11,19 @@
     &:hover {
       color: $red;
     }
+  }
+
+  &.hidden {
+    max-height: 0;
+    overflow: hidden;
+    border: 0px solid rgba(78,0,255,0);
+    @include transition(all 0.4s ease-out);
+  }
+
+  &.shown {
+    max-height: 1000px;
+    border: 2px solid $blue;
+    padding: 15px 10px !important;
+    @include transition(all 0.4s ease-out);
   }
 }

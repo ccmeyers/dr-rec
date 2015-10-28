@@ -7,8 +7,10 @@ var DoctorDetails = React.createClass({
     var doctorId = this.props.id,
         doctorDetailsId = "#details-"+ doctorId,
         editDoctorFormId = "#edit-" + doctorId;
-    $(doctorDetailsId).fadeOut();
-    $(editDoctorFormId).fadeIn();
+    $(doctorDetailsId).removeClass('shown').addClass('hidden');
+    setTimeout(function(){
+      $(editDoctorFormId).addClass('shown');
+    }, 300);
   },
   render: function() {
     var detailsId = "details-"+this.props.id;
@@ -17,7 +19,7 @@ var DoctorDetails = React.createClass({
     var websiteUrl = rawWebsite.includes('http://') || rawWebsite.includes('https://') ? rawWebsite : "http://"+rawWebsite;
 
     return (
-      <div className="doctor-details-card col s12" id={detailsId}>
+      <div className="doctor-details-card col s12 hidden" id={detailsId}>
         <div className="col s6">
           <h5 className="name">{this.props.first_name} {this.props.last_name}</h5>
           <h6 className="practice">{this.props.practice_name}</h6>
