@@ -1,0 +1,11 @@
+.clear-filters {
+  display: none;
+  margin-top: 1rem;
+  padding-top: 18px !important;
+  color: $blue;
+  @include transition(color 0.25s ease-in-out);
+
+  &:hover {
+    color: $red;
+  }
+}

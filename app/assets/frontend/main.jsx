@@ -27,22 +27,38 @@ var Main = React.createClass({
     });
   },
   filterSpecialty: function(specialtySlug) {
-    $('.doctor-card').each(function() {
-      if ($(this).hasClass(specialtySlug)) {
-        $(this).show();
-      } else {
-        $(this).hide();
-      }
-    });
-    var markers = document.getElementsByClassName('marker');
-    [].forEach.call(markers, function(marker) {
-      if (marker.classList.contains(specialtySlug)) {
+    if (specialtySlug === 'clear') {
+      $('.doctor-card').show();
+      var markers = document.getElementsByClassName('marker');
+      [].forEach.call(markers, function(marker) {
         marker.style.display = ""
+      });
+      $('.clear-filters').hide();
+    } else {
+      var doctorsToShow = [];
+      $('.doctor-card').each(function() {
+        if ($(this).hasClass(specialtySlug)) {
+          doctorsToShow.push($(this));
+        } else {
+          $(this).hide();
+        }
+      });
+      if (doctorsToShow.length > 0) {
+        doctorsToShow.forEach(function(card) {
+          card.show();
+        });
       } else {
-        marker.style.display = "none"
+        $('.doctors-list .row').text('There are no doctors for this specialty.');
       }
-    });
-
+      var markers = document.getElementsByClassName('marker');
+      [].forEach.call(markers, function(marker) {
+        if (marker.classList.contains(specialtySlug)) {
+          marker.style.display = ""
+        } else {
+          marker.style.display = "none"
+        }
+      });
+    }
   },
   render: function(){
     return (
