@@ -25,19 +25,20 @@ var EditDoctor = React.createClass({
     }
   },
   componentDidMount: function() {
-    this.swapCoverageInputs();
+    var slug = this.state.specialty_slug;
+    this.swapCoverageInputs(slug);
   },
-  swapCoverageInputs: function() {
+  swapCoverageInputs: function(slug) {
     var dentalPPO = this.refs.dentalPPO.getDOMNode(),
         dentalDHMO = this.refs.dentalDHMO.getDOMNode(),
         medicalRow = this.refs.medical.getDOMNode(),
         visionRow = this.refs.vision.getDOMNode();
-    if (this.state.specialty_slug === 'dentist') {
+    if (slug === 'dentist') {
       $(medicalRow).hide();
       $(visionRow).hide();
       $(dentalPPO).show();
       $(dentalDHMO).show();
-    } else if (this.state.specialty_slug === 'eye-doctor') {
+    } else if (slug === 'eye-doctor') {
       $(medicalRow).hide();
       $(dentalPPO).hide();
       $(dentalDHMO).hide();
@@ -72,14 +73,13 @@ var EditDoctor = React.createClass({
   },
   editSpecialty: function(specialty, slug) {
     this.setState({specialty: specialty, specialty_slug: slug});
-    this.swapCoverageInputs();
+    this.swapCoverageInputs(slug);
   },
   editCoverage: function(coverage, ans, e) {
     var that = this;
     $(e.target).siblings('input:checked').prop('checked', false);
     $(e.target).prev('input').prop('checked', true);
     if (coverage === 'medical') {
-      console.log('changing to: ', ans);
       that.setState({ aetna_oaepo_silver_2000: ans });
     } else if (coverage === 'dentalPPO') {
       that.setState({ guardian_ppo: ans });
@@ -164,7 +164,7 @@ var EditDoctor = React.createClass({
               <input placeholder="Name of Practice" ref="practiceName" type="text" className="validate" defaultValue={this.props.practice_name} onChange={this.editPractice} />
             </div>
             <div className="input-field col s6">
-              <SpecialtySelect sendSpecialty={this.editSpecialty} defaultSpecialty={this.props.specialty} defaultSpecialtySlug={this.props.specialty_slug} onChange={this.changeSpecialty} />
+              <SpecialtySelect sendSpecialty={this.editSpecialty} defaultSpecialty={this.props.specialty} defaultSpecialtySlug={this.props.specialty_slug} />
             </div>
           </div>
           <div className="row">
@@ -182,39 +182,39 @@ var EditDoctor = React.createClass({
             <div className="col s6 health-coverage">
               <div className="row medical" ref="medical">
                 <h6 className="option-label">Accepts Red Antler Insurance -- AETNA SILVER OA EPO 2000?</h6>
-                <input ref="aetnaYes" type="radio" />
-                <label className="aetna-yes" htmlFor="aetna-yes" onClick={this.editCoverage.bind(this, 'medical', 'yes')}>Yes</label>
-                <input ref="aetnaNo" type="radio" />
-                <label htmlFor="aetna-yes" onClick={this.editCoverage.bind(this, 'medical', 'no')}>No</label>
-                <input ref="aetnaMaybe" type="radio" />
-                <label htmlFor="aetna-yes" onClick={this.editCoverage.bind(this, 'medical', 'maybe')}>I don't know</label>
+                <input type="radio" defaultChecked={ this.state.aetna_oaepo_silver_2000 === 'yes' ? 'checked' : '' } />
+                <label onClick={this.editCoverage.bind(this, 'medical', 'yes')}>Yes</label>
+                <input type="radio" defaultChecked={ this.state.aetna_oaepo_silver_2000 === 'no' ? 'checked' : '' } />
+                <label onClick={this.editCoverage.bind(this, 'medical', 'no')}>No</label>
+                <input type="radio" defaultChecked={ this.state.aetna_oaepo_silver_2000 === 'maybe' ? 'checked' : '' } />
+                <label onClick={this.editCoverage.bind(this, 'medical', 'maybe')}>I don't know</label>
               </div>
               <div className="row dental" ref="dentalPPO">
                 <h6 className="option-label">Accepts Red Antler Insurance -- GUARDIAN DENTAL PPO?</h6>
-                <input ref="aetnaYes" type="radio" />
-                <label className="aetna-yes" htmlFor="aetna-yes" onClick={this.editCoverage.bind(this, 'dentalPPO', 'yes')}>Yes</label>
-                <input ref="aetnaNo" type="radio" />
-                <label htmlFor="aetna-yes" onClick={this.editCoverage.bind(this, 'dentalPPO', 'no')}>No</label>
-                <input ref="aetnaMaybe" type="radio" />
-                <label htmlFor="aetna-yes" onClick={this.editCoverage.bind(this, 'dentalPPO', 'maybe')}>I don't know</label>
+                <input type="radio" defaultChecked={ this.state.guardian_ppo === 'yes' ? 'checked' : '' } />
+                <label onClick={this.editCoverage.bind(this, 'dentalPPO', 'yes')}>Yes</label>
+                <input type="radio" defaultChecked={ this.state.guardian_ppo === 'no' ? 'checked' : '' } />
+                <label onClick={this.editCoverage.bind(this, 'dentalPPO', 'no')}>No</label>
+                <input type="radio" defaultChecked={ this.state.guardian_ppo === 'maybe' ? 'checked' : '' } />
+                <label onClick={this.editCoverage.bind(this, 'dentalPPO', 'maybe')}>I don't know</label>
               </div>
               <div className="row dental" ref="dentalDHMO">
                 <h6 className="option-label">Accepts Red Antler Insurance -- GUARDIAN DENTAL DHMO?</h6>
-                <input ref="aetnaYes" type="radio" />
-                <label className="aetna-yes" htmlFor="aetna-yes" onClick={this.editCoverage.bind(this, 'dentalDHMO', 'yes')}>Yes</label>
-                <input ref="aetnaNo" type="radio" />
-                <label htmlFor="aetna-yes" onClick={this.editCoverage.bind(this, 'dentalDHMO', 'no')}>No</label>
-                <input ref="aetnaMaybe" type="radio" />
-                <label htmlFor="aetna-yes" onClick={this.editCoverage.bind(this, 'dentalDHMO', 'maybe')}>I don't know</label>
+                <input type="radio" defaultChecked={ this.state.guardian_dhmo === 'yes' ? 'checked' : '' } />
+                <label onClick={this.editCoverage.bind(this, 'dentalDHMO', 'yes')}>Yes</label>
+                <input type="radio" defaultChecked={ this.state.guardian_dhmo === 'no' ? 'checked' : '' } />
+                <label onClick={this.editCoverage.bind(this, 'dentalDHMO', 'no')}>No</label>
+                <input type="radio" defaultChecked={ this.state.guardian_dhmo === 'maybe' ? 'checked' : '' } />
+                <label onClick={this.editCoverage.bind(this, 'dentalDHMO', 'maybe')}>I don't know</label>
               </div>
               <div className="row vision" ref="vision">
                 <h6 className="option-label">Accepts Red Antler Insurance -- EYEMED VISION PPO?</h6>
-                <input ref="aetnaYes" type="radio" />
-                <label className="aetna-yes" htmlFor="aetna-yes" onClick={this.editCoverage.bind(this, 'vision', 'yes')}>Yes</label>
-                <input ref="aetnaNo" type="radio" />
-                <label htmlFor="aetna-yes" onClick={this.editCoverage.bind(this, 'vision', 'no')}>No</label>
-                <input ref="aetnaMaybe" type="radio" />
-                <label htmlFor="aetna-yes" onClick={this.editCoverage.bind(this, 'vision', 'maybe')}>I don't know</label>
+                <input type="radio" defaultChecked={ this.state.eyemed_ppo === 'yes' ? 'checked' : '' } />
+                <label onClick={this.editCoverage.bind(this, 'vision', 'yes')}>Yes</label>
+                <input type="radio" defaultChecked={ this.state.eyemed_ppo === 'no' ? 'checked' : '' } />
+                <label onClick={this.editCoverage.bind(this, 'vision', 'no')}>No</label>
+                <input type="radio" defaultChecked={ this.state.eyemed_ppo === 'maybe' ? 'checked' : '' } />
+                <label onClick={this.editCoverage.bind(this, 'vision', 'maybe')}>I don't know</label>
               </div>
             </div>
           </div>

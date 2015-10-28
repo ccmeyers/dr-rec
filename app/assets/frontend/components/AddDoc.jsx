@@ -8,11 +8,52 @@ var AddDoc = React.createClass({
       sentSpecialty: '',
       specialtySlug: '',
       latitude: '',
-      longitude: ''
+      longitude: '',
+      aetna_oaepo_silver_2000: '',
+      eyemed_ppo: '',
+      guardian_ppo: '',
+      guardian_dhmo: ''
     }
   },
   addSpecialty: function(specialty, slug) {
     this.setState({ sentSpecialty: specialty, specialtySlug: slug });
+    this.swapCoverageInputs(slug);
+  },
+  swapCoverageInputs: function(slug) {
+    var dentalPPO = this.refs.dentalPPO.getDOMNode(),
+        dentalDHMO = this.refs.dentalDHMO.getDOMNode(),
+        medicalRow = this.refs.medical.getDOMNode(),
+        visionRow = this.refs.vision.getDOMNode();
+    if (slug === 'dentist') {
+      $(medicalRow).hide();
+      $(visionRow).hide();
+      $(dentalPPO).show();
+      $(dentalDHMO).show();
+    } else if (slug === 'eye-doctor') {
+      $(medicalRow).hide();
+      $(dentalPPO).hide();
+      $(dentalDHMO).hide();
+      $(visionRow).show();
+    } else {
+      $(visionRow).hide();
+      $(dentalPPO).hide();
+      $(dentalDHMO).hide();
+      $(medicalRow).show();
+    }
+  },
+  addCoverage: function(coverage, ans, e) {
+    var that = this;
+    $(e.target).siblings('input:checked').prop('checked', false);
+    $(e.target).prev('input').prop('checked', true);
+    if (coverage === 'medical') {
+      that.setState({ aetna_oaepo_silver_2000: ans });
+    } else if (coverage === 'dentalPPO') {
+      that.setState({ guardian_ppo: ans });
+    } else if (coverage === 'dentalDHMO') {
+      that.setState({ guardian_dhmo: ans });
+    } else if (coverage === 'vision') {
+      that.setState({ eyemed_ppo: ans });
+    }
   },
   startAddDoctor: function(event) {
     event.preventDefault();
@@ -48,7 +89,11 @@ var AddDoc = React.createClass({
     var address = this.refs.address.getDOMNode().value;
     var latitude = this.state.latitude;
     var longitude = this.state.longitude;
-    var drObj = { first_name: first_name, last_name: last_name, practice_name: practice_name, specialty: addedSpecialty, specialty_slug: addedSpecialtySlug, phone: phone, website: website, notes: notes, address: address, latitude: latitude, longitude: longitude };
+    var aetna_oaepo_silver_2000 = this.state.aetna_oaepo_silver_2000;
+    var eyemed_ppo = this.state.eyemed_ppo;
+    var guardian_ppo = this.state.guardian_ppo;
+    var guardian_dhmo = this.state.guardian_dhmo;
+    var drObj = { first_name: first_name, last_name: last_name, practice_name: practice_name, specialty: addedSpecialty, specialty_slug: addedSpecialtySlug, phone: phone, website: website, notes: notes, address: address, latitude: latitude, longitude: longitude, aetna_oaepo_silver_2000: aetna_oaepo_silver_2000, eyemed_ppo: eyemed_ppo, guardian_ppo: guardian_ppo, guardian_dhmo: guardian_dhmo };
     DoctorActions.sendDoc(drObj);
     this.refs.firstName.getDOMNode().value = '';
     this.refs.lastName.getDOMNode().value = '';
@@ -95,8 +140,46 @@ var AddDoc = React.createClass({
             </div>
           </div>
           <div className="row">
-            <div className="col s12">
+            <div className="col s6">
               <input placeholder="Address" ref="address" type="text" className="validate" />
+            </div>
+            <div className="col s6 health-coverage">
+              <div className="row medical" ref="medical">
+                <h6 className="option-label">Accepts Red Antler Insurance -- AETNA SILVER OA EPO 2000?</h6>
+                <input type="radio" />
+                <label onClick={this.addCoverage.bind(this, 'medical', 'yes')}>Yes</label>
+                <input type="radio" />
+                <label onClick={this.addCoverage.bind(this, 'medical', 'no')}>No</label>
+                <input type="radio" />
+                <label onClick={this.addCoverage.bind(this, 'medical', 'maybe')}>I don't know</label>
+              </div>
+              <div className="row dental" ref="dentalPPO">
+                <h6 className="option-label">Accepts Red Antler Insurance -- GUARDIAN DENTAL PPO?</h6>
+                <input type="radio" />
+                <label onClick={this.addCoverage.bind(this, 'dentalPPO', 'yes')}>Yes</label>
+                <input type="radio" />
+                <label onClick={this.addCoverage.bind(this, 'dentalPPO', 'no')}>No</label>
+                <input type="radio" />
+                <label onClick={this.addCoverage.bind(this, 'dentalPPO', 'maybe')}>I don't know</label>
+              </div>
+              <div className="row dental" ref="dentalDHMO">
+                <h6 className="option-label">Accepts Red Antler Insurance -- GUARDIAN DENTAL DHMO?</h6>
+                <input type="radio" />
+                <label onClick={this.addCoverage.bind(this, 'dentalDHMO', 'yes')}>Yes</label>
+                <input type="radio" />
+                <label onClick={this.addCoverage.bind(this, 'dentalDHMO', 'no')}>No</label>
+                <input type="radio" />
+                <label onClick={this.addCoverage.bind(this, 'dentalDHMO', 'maybe')}>I don't know</label>
+              </div>
+              <div className="row vision" ref="vision">
+                <h6 className="option-label">Accepts Red Antler Insurance -- EYEMED VISION PPO?</h6>
+                <input type="radio" />
+                <label onClick={this.addCoverage.bind(this, 'vision', 'yes')}>Yes</label>
+                <input type="radio" />
+                <label onClick={this.addCoverage.bind(this, 'vision', 'no')}>No</label>
+                <input type="radio" />
+                <label onClick={this.addCoverage.bind(this, 'vision', 'maybe')}>I don't know</label>
+              </div>
             </div>
           </div>
           <div className="row">

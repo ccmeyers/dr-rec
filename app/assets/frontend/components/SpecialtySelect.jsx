@@ -9,9 +9,14 @@ var SpecialtySelect = React.createClass({
       selected: {value: 'Choose Specialty', label: 'Choose Specialty', slug: ''}
     }
   },
-    sendSpecialty: function(option) {
-      this.props.sendSpecialty(option.label, option.slug);
-      this.setState({selected: option})
+  sendSpecialty: function(option) {
+    this.props.sendSpecialty(option.label, option.slug);
+    this.setState({selected: option})
+  },
+  componentDidMount: function() {
+    if (this.state.defaultSpecialty) {
+      this.setState({ selected: { value: this.state.defaultSpecialty, label: this.state.defaultSpecialty, slug: this.state.defaultSpecialtySlug }})
+    }
   },
   render: function() {
     var options = [
@@ -79,12 +84,7 @@ var SpecialtySelect = React.createClass({
       }
     ]
 
-    var defaultOption;
-    if (this.state.defaultSpecialty) {
-      defaultOption = {value: this.state.defaultSpecialty, label: this.state.defaultSpecialty, slug: this.state.defaultSpecialtySlug}
-    } else {
-      defaultOption = this.state.selected;
-    } 
+    var defaultOption = this.state.selected;
 
     return (
       <Dropdown options={options} onChange={this.sendSpecialty} value={defaultOption} />

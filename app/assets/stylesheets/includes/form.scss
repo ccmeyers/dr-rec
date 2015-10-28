@@ -17,25 +17,35 @@ form {
     margin-top: 1rem;
   }
 
-  [type="radio"]:not(:checked) + label,
-  [type="radio"]:checked + label {
-    padding-left: 30px;
-    padding-right: 20px;
-  }
-
-  [type="radio"]:checked + label:after {
-    border-color: $blue;
-    background-color: $blue;
-  }
-
   .health-coverage {
+
+    h6 {
+      margin-top: 0;
+    }
+
+    [type="radio"]:not(:checked) + label,
+    [type="radio"]:checked + label {
+      padding-left: 30px;
+      padding-right: 20px;
+    }
+
+    [type="radio"]:checked + label:after {
+      border-color: $blue;
+      background-color: $blue;
+    }
+
+    .medical {
+      margin-bottom: 0;
+    }
 
     .dental {
       display: none;
+      margin-bottom: 0;
     }
 
     .vision {
       display: none;
+      margin-bottom: 0;
     }
   }
 }
