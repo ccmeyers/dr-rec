@@ -24,12 +24,16 @@ var DoctorDetails = React.createClass({
   },
   toggleEditForm: function() {
     var doctorId = this.props.id,
-        doctorDetailsId = "#details-"+ doctorId,
+        doctorDetailsCard = this.refs.doctorDetailsCard.getDOMNode(),
         editDoctorFormId = "#edit-" + doctorId;
-    $(doctorDetailsId).removeClass('shown').addClass('hidden');
+    $(doctorDetailsCard).removeClass('shown').addClass('hidden');
     setTimeout(function(){
       $(editDoctorFormId).addClass('shown');
     }, 300);
+  },
+  closeDetails: function() {
+    var doctorDetailsCard = this.refs.doctorDetailsCard.getDOMNode();
+    $(doctorDetailsCard).removeClass('shown').addClass('hidden');
   },
   render: function() {
     var detailsId = "details-"+this.props.id;
@@ -38,7 +42,11 @@ var DoctorDetails = React.createClass({
     var websiteUrl = rawWebsite.includes('http://') || rawWebsite.includes('https://') ? rawWebsite : "http://"+rawWebsite;
 
     return (
-      <div className="doctor-details-card col s12 hidden" id={detailsId}>
+      <div className="doctor-details-card col s12 hidden" id={detailsId} ref="doctorDetailsCard">
+        <div className="close" onClick={this.closeDetails}>
+          <div className="line1"></div>
+          <div className="line2"></div>
+        </div>
         <div className="col s6">
           <h5 className="name">{this.props.first_name} {this.props.last_name}</h5>
           <h6 className="practice">{this.props.practice_name}</h6>

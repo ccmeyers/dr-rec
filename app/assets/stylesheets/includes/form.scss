@@ -12,6 +12,10 @@
 
 form {
 
+  .cancel {
+    margin-right: 20px;
+  }
+
   .input_field {
     margin-top: 1rem;
   }
@@ -55,10 +59,6 @@ form {
   .edit-doctor {
 
     form {
-
-      .cancel {
-        margin-right: 20px;
-      }
 
       &.hidden {
         max-height: 0;

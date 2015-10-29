@@ -1,5 +1,6 @@
 @import 'materialize';
 @import './includes/variables';
+@import './includes/header';
 @import './includes/dropdown';
 @import './includes/form';
 @import './includes/doctor-details';
@@ -8,11 +9,6 @@
 @import './includes/doctors-list';
 @import './includes/upvote';
 @import './includes/filters';
-
-.head {
-  background-color: $blue;
-  color: white;
-}
 
 .btn {
   background-color: $blue;

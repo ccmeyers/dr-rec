@@ -1,0 +1,14 @@
+.header {
+  background-color: $blue;
+  color: white;
+
+  .header-logo {
+    display: inline-block;
+  }
+
+  h3 {
+    display: inline-block;
+    margin-bottom: 0;
+    margin-left: 10px;
+  }
+}

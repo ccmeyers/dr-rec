@@ -190,6 +190,7 @@ var AddDoc = React.createClass({
           <div className="row">
             <div className="col s12">
               <button type='submit' className='btn right'>Submit</button>
+              <div className='btn right cancel' onClick={this.toggleForm}>Cancel</div>
             </div>
           </div>
         </form>
