@@ -34,7 +34,7 @@ var Main = React.createClass({
       [].forEach.call(markers, function(marker) {
         marker.style.display = ""
       });
-      $('.clear-filters').hide();
+      $('.clear-filters').removeClass('visible');
     } else {
       $('.doctor-details-card.shown').removeClass('shown').addClass('hidden');
       var doctorsToShow = [];
@@ -69,7 +69,6 @@ var Main = React.createClass({
         <Header />
         <div className="container">
           <AddDoc />
-            <h4>List of Doctors</h4>
           <FilterSelect  filterSpecialty={this.filterSpecialty}/>
           <DoctorsList doctors={this.state.doctorsList} />
         </div>

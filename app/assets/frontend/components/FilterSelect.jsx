@@ -10,7 +10,7 @@ var FilterSelect = React.createClass({
   filterSpecialty: function(option) {
     this.props.filterSpecialty(option.slug);
     this.setState({selected: option})
-    $('.clear-filters').show();
+    $('.clear-filters').addClass('visible');
   },
   clearFilters: function(e) {
     e.preventDefault();
@@ -86,11 +86,12 @@ var FilterSelect = React.createClass({
     var defaultOption = this.state.selected;
 
     return (
-      <div className="row">
+      <div className="header-filter row">
+        <div className="col s4"><h4>List of Doctors</h4></div>
+        <a href="" className="clear-filters col s2" onClick={this.clearFilters}>Clear Filters</a>
         <div className="input-field col s6">
           <Dropdown options={options} onChange={this.filterSpecialty} value={defaultOption} />
         </div>
-        <a href="" className="clear-filters col s6" onClick={this.clearFilters}>Clear Filters</a>
       </div>
     )
   }

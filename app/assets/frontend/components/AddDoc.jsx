@@ -110,7 +110,7 @@ var AddDoc = React.createClass({
     return (
       <div className="add-doctor">
         <div className="row">
-          <div className="col s6 offset-s6">
+          <div className="col s12">
             <h5 id="form-header" onClick={this.toggleForm}>Add a Recommendation</h5>
           </div>
         </div>

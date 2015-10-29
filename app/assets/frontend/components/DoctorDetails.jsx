@@ -3,6 +3,25 @@ var Upvote = require('./Upvote.jsx')
 var DeleteDoctor = require('./DeleteDoctor.jsx')
 
 var DoctorDetails = React.createClass({
+  componentDidMount: function() {
+    var medical = this.refs.medical.getDOMNode();
+    var dentalppo = this.refs.dentalppo.getDOMNode();
+    var dentaldhmo = this.refs.dentaldhmo.getDOMNode();
+    var vision = this.refs.vision.getDOMNode();
+
+    if (this.props.specialty_slug === 'dentist') {
+      $(medical).hide();
+      $(vision).hide();
+    } else if (this.props.specialty_slug === 'eye-doctor') {
+      $(medical).hide();
+      $(dentalppo).hide();
+      $(dentaldhmo).hide();
+    } else {
+      $(dentalppo).hide();
+      $(dentaldhmo).hide();
+      $(vision).hide();
+    }
+  },
   toggleEditForm: function() {
     var doctorId = this.props.id,
         doctorDetailsId = "#details-"+ doctorId,
@@ -30,7 +49,12 @@ var DoctorDetails = React.createClass({
           <Upvote upvotes={this.props.upvotes} id={this.props.id} />
         </div>
         <div className="col s6">
-          <p className="notes">Notes: {this.props.notes}</p>
+          <h6>Takes Red Antler Insurance?</h6>
+          <h6 className="coverage" ref="medical"><label>AETNA SILVER OA EPO 2000:</label> {this.props.aetna_oaepo_silver_2000} </h6>
+          <h6 className="coverage" ref="dentalppo"><label>GUARDIAN DENTAL PPO:</label> {this.props.guardian_ppo} </h6>
+          <h6 className="coverage" ref="dentaldhmo"><label>GUARDIAN DENTAL DHMO:</label> {this.props.guardian_dhmo} </h6>
+          <h6 className="coverage" ref="vision"><label>EYEMED VISION PPO:</label> {this.props.eyemed_ppo} </h6>
+          <p className="notes"><label>Notes: </label>{this.props.notes}</p>
           <div className="edit-toggle" onClick={this.toggleEditForm}>Edit</div>
           <DeleteDoctor id={this.props.id}/>
         </div>

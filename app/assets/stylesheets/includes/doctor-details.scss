@@ -16,6 +16,20 @@
       }
     }
 
+    label {
+      font-size: 1em;
+    }
+
+    .coverage {
+      text-transform: uppercase;
+
+      label {
+        text-transform: none;
+        font-size: 1em;
+        margin-right: 10px;
+      }
+    }
+
     &.hidden {
       max-height: 0;
       overflow: hidden;
