@@ -6,7 +6,7 @@ var SpecialtySelect = React.createClass({
     return {
       defaultSpecialty: this.props.defaultSpecialty,
       defaultSpecialtySlug: this.props.defaultSpecialtySlug,
-      selected: {value: 'Choose Specialty', label: 'Choose Specialty', slug: ''}
+      selected: {value: 'Choose Specialty', label: 'Choose Specialty *', slug: ''}
     }
   },
   sendSpecialty: function(option) {

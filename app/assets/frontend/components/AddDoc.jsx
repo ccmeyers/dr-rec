@@ -58,9 +58,35 @@ var AddDoc = React.createClass({
   startAddDoctor: function(event) {
     event.preventDefault();
 
-    var address = this.refs.address.getDOMNode().value;
-    this.getLatLng(address);
+    var first_name = this.refs.firstName.getDOMNode();
+    var first_name_value = first_name.value;
+    var last_name = this.refs.lastName.getDOMNode();
+    var last_name_value = last_name.value;
+    var address = this.refs.address.getDOMNode();
+    var address_value = address.value;
 
+    if (first_name_value === '' || last_name_value === '' || address_value === '' || this.state.sentSpecialty === '') {
+      $('.error-msg').text('Please fill out required fields.').addClass('error');
+      if (first_name_value === '') {
+        $(first_name).addClass('error');
+      }
+      if (last_name_value === '') {
+        $(last_name).addClass('error');
+      }
+      if (address_value === '') {
+        $(address).addClass('error');
+      }
+      if (this.state.sentSpecialty === '') {
+        $('.add-doctor .Dropdown-control').addClass('error');
+      }
+    } else {
+      this.getLatLng(address_value);
+      $('.error-msg').text('* = required').removeClass('error');
+      $(first_name).removeClass('error');
+      $(last_name).removeClass('error');
+      $(address).removeClass('error');
+      $('.add-doctor .Dropdown-control').removeClass('error');
+    }
   },
   getLatLng: function(address) {
     var that = this;
@@ -117,10 +143,10 @@ var AddDoc = React.createClass({
         <form onSubmit={this.startAddDoctor}>
           <div className="row">
             <div className="input_field col s6">
-              <input placeholder="First Name" ref="firstName" type="text" className="validate" />
+              <input placeholder="First Name *" ref="firstName" type="text" className="validate" />
             </div>
             <div className="input-field col s6">
-              <input placeholder="Last Name" ref="lastName" type="text" className="validate" />
+              <input placeholder="Last Name *" ref="lastName" type="text" className="validate" />
             </div>
           </div>
           <div className="row">
@@ -141,7 +167,7 @@ var AddDoc = React.createClass({
           </div>
           <div className="row">
             <div className="col s6">
-              <input placeholder="Address" ref="address" type="text" className="validate" />
+              <input placeholder="Address *" ref="address" type="text" className="validate" />
             </div>
             <div className="col s6 health-coverage">
               <div className="row medical" ref="medical">
@@ -189,6 +215,7 @@ var AddDoc = React.createClass({
           </div>
           <div className="row">
             <div className="col s12">
+              <label className="error-msg">* = required</label>
               <button type='submit' className='btn right'>Submit</button>
               <div className='btn right cancel' onClick={this.toggleForm}>Cancel</div>
             </div>

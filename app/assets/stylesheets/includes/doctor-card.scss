@@ -1,6 +1,7 @@
 .doctor-card {
   @include transition(all 0.25s ease-in-out);
   cursor: pointer;
+  padding: 10px !important;
 
   &.active,
   &:hover {

@@ -20,6 +20,27 @@ form {
     margin-top: 1rem;
   }
 
+  input[type="text"] {
+    &.error {
+      border-bottom: 1px solid $red;
+      box-shadow: 0 1px 0 0 $red;
+    }
+  }
+
+  .Dropdown-control {
+    &.error {
+      border: 2px solid $red;
+    }
+  }
+
+  .error-msg {
+    font-size: 1em;
+
+    &.error {
+      color: $red;
+    }
+  }
+
   .health-coverage {
 
     h6 {
