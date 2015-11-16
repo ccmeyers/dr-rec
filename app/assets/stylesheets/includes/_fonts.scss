@@ -1,0 +1,61 @@
+/* @import must be at top of file, otherwise font CSS will not work */
+@import url("//hello.myfonts.net/count/2e23e6");
+
+@font-face {
+    font-family: 'Sailec';
+    font-weight: 500;
+    src: font-url("2E23E6_9_0.eot");
+    src: font-url("2E23E6_9_0.eot?#iefix") format('embedded-opentype'),
+        font-url('2E23E6_9_0.woff2') format('woff2'),
+        font-url('2E23E6_9_0.woff') format('woff'),
+        font-url('2E23E6_9_0.ttf') format('truetype');
+}
+@font-face {
+    font-family: 'Sailec';
+    font-weight: 500;
+    font-style: italic;
+    src: font-url("2E23E6_D_0.eot");
+    src: font-url("2E23E6_D_0.eot?#iefix") format('embedded-opentype'),
+        font-url('2E23E6_D_0.woff2') format('woff2'),
+        font-url('2E23E6_D_0.woff') format('woff'),
+        font-url('2E23E6_D_0.ttf') format('truetype');
+}
+
+@font-face {
+    font-family: 'Sailec';
+    font-weight: 700;
+    src: font-url("2E23E6_2_0.eot");
+    src: font-url("2E23E6_2_0.eot?#iefix") format('embedded-opentype'),
+        font-url('2E23E6_2_0.woff2') format('woff2'),
+        font-url('2E23E6_2_0.woff') format('woff'),
+        font-url('2E23E6_2_0.ttf') format('truetype');
+}
+@font-face {
+    font-family: 'Sailec';
+    font-weight: 700;
+    font-style: italic;
+    src: font-url("2E23E6_6_0.eot");
+    src: font-url("2E23E6_6_0.eot?#iefix") format('embedded-opentype'),
+        font-url('2E23E6_6_0.woff2') format('woff2'),
+        font-url('2E23E6_6_0.woff') format('woff'),
+        font-url('2E23E6_6_0.ttf') format('truetype');
+}
+@font-face {
+    font-family: 'Sailec';
+    font-weight: 900;
+    src: font-url("2E23E6_0_0.eot");
+    src: font-url("2E23E6_0_0.eot?#iefix") format('embedded-opentype'),
+        font-url('2E23E6_0_0.woff2') format('woff2'),
+        font-url('2E23E6_0_0.woff') format('woff'),
+        font-url('2E23E6_0_0.ttf') format('truetype');
+}
+@font-face {
+    font-family: 'Sailec';
+    font-weight: 900;
+    font-style: italic;
+    src: font-url("2E23E6_3_0.eot");
+    src: font-url("2E23E6_3_0.eot?#iefix") format('embedded-opentype'),
+        font-url('2E23E6_3_0.woff2') format('woff2'),
+        font-url('2E23E6_3_0.woff') format('woff'),
+        font-url('2E23E6_3_0.ttf') format('truetype');
+}

@@ -24,5 +24,6 @@ module DrRec
     # allows gem reactify compile jsx to js
     config.browserify_rails.commandline_options = "-t reactify --extension=\".js.jsx\""
     config.browserify_rails.source_map_environments << "development"
+    config.assets.paths << Rails.root.join("app", "assets", "fonts")
   end
 end

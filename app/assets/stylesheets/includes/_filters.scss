@@ -1,0 +1,46 @@
+.header-filter {
+  margin-bottom: 0;
+  padding-left: 0;
+
+  .input-field {
+    padding-left: 0;
+
+    .Dropdown {
+
+      .Dropdown-control {
+        border: 1px solid $blue;
+        color: $blue;
+
+        .Dropdown-arrow {
+          border-color: $blue transparent transparent;
+        }
+      }
+
+      .Dropdown-menu {
+        border: 1px solid $blue;
+      }
+
+      &.is-open {
+        .Dropdown-arrow {
+          border-color: transparent transparent $blue;
+        }
+      }
+    }
+  }
+
+  .clear-filters {
+    visibility: hidden;
+    margin-top: 1rem;
+    padding-top: 18px !important;
+    color: $blue;
+    @include transition(color 0.25s ease-in-out);
+
+    &.visible {
+      visibility: visible;
+    }
+
+    &:hover {
+      color: $red;
+    }
+  }
+}

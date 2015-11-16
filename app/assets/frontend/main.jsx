@@ -1,5 +1,6 @@
 var React = require('react');
 var Header = require('./components/Header.jsx');
+var Hero = require('./components/Hero.jsx');
 var AddDoc = require('./components/AddDoc.jsx');
 var DoctorsList = require('./components/DoctorsList.jsx');
 var DoctorStore = require('./stores/DoctorStore.jsx');
@@ -67,9 +68,12 @@ var Main = React.createClass({
     return (
       <div>
         <Header />
+        <Hero />
         <div className="container">
-          <AddDoc />
-          <FilterSelect  filterSpecialty={this.filterSpecialty}/>
+          <div className="row">
+            <FilterSelect  filterSpecialty={this.filterSpecialty}/>
+            <AddDoc />
+          </div>
           <DoctorsList doctors={this.state.doctorsList} />
         </div>
       </div>

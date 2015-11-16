@@ -1,0 +1,35 @@
+.header {
+  background-color: $blue;
+  color: white;
+  padding: 25px 0 10px;
+
+  .row {
+    margin-bottom: 0;
+
+    .header-logo {
+      display: inline-block;
+      width: 20px;
+      height: auto;
+    }
+
+    .nav-right {
+      text-align: right;
+
+      li {
+        display: inline-block;
+        list-style: none;
+
+        a {
+          font-size: 13px;
+          color: white;
+          margin-left: 20px;
+          transition: color 0.3s;
+
+          &:hover {
+            color: black;
+          }
+        }
+      }
+    }
+  }
+}

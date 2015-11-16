@@ -6,7 +6,7 @@ var Header = React.createClass({
       <div className="header">
         <div className="container">
           <div className="row">
-            <div className="col s12">
+            <div className="col s2">
               <svg className="header-logo" xmlns="http://www.w3.org/2000/svg" width="43.512px" height="43.625px" viewBox="0 0 83.512 83.625">
                 <path className="path-antler" fill="#ffffff" d="M82.871,16.434c-0.951,1.975-2.193,3.906-3.645,5.768c-2.014,2.584-4.975,4.953-7.844,7.201
                 	c-4.26,3.334-8.279,5.895-12.629,8.686c-1.219,0.783-3.367,2.041-4.092,3.303c-0.545,0.941-0.518,2.123-0.021,3.055
@@ -27,8 +27,12 @@ var Header = React.createClass({
                 	c0.334,1.473,0.914,3.752,2.156,4.824c1.447,1.254,3.686,0.17,5.377-1.109c2.824-2.129,5.051-4.854,6.844-6.947
                 	c0.529-0.629,0.764-0.311,0.518,0.291C83.279,15.525,83.094,15.965,82.871,16.434"/>
               </svg>
-              <h3>Recommend a Doctor to Fellow Antlerists</h3>
-              <p>* all recommendations are anonymous</p>
+            </div>
+            <div className="col s10 nav-right">
+              <li><a href="http://directory.redantler.com/directory">DIRECTORY</a></li>
+              <li><a href="http://directory.redantler.com/submit-ticket">IT TICKETS</a></li>
+              <li><a href="http://directory.redantler.com/books">BOOK CLUB</a></li>
+              <li><a href="">DOCTOR RECOMMENDATIONS</a></li>
             </div>
           </div>
         </div>

@@ -135,92 +135,92 @@ var AddDoc = React.createClass({
   render: function() {
     return (
       <div className="add-doctor">
-        <div className="row">
-          <div className="col s12">
-            <h5 id="form-header" onClick={this.toggleForm}>Add a Recommendation</h5>
-          </div>
+        <div className="col s4 offset-s2">
+          <h5 id="form-header" onClick={this.toggleForm}><figure>+ </figure> Add a Recommendation</h5>
         </div>
-        <form onSubmit={this.startAddDoctor}>
-          <div className="row">
-            <div className="input_field col s6">
-              <input placeholder="First Name *" ref="firstName" type="text" className="validate" />
-            </div>
-            <div className="input-field col s6">
-              <input placeholder="Last Name *" ref="lastName" type="text" className="validate" />
-            </div>
-          </div>
-          <div className="row">
-            <div className="input-field col s6">
-              <input placeholder="Name of Practice" ref="practiceName" type="text" className="validate" />
-            </div>
-            <div className="input-field col s6">
-              <SpecialtySelect sendSpecialty={this.addSpecialty}/>
-            </div>
-          </div>
-          <div className="row">
-            <div className="col s6">
-              <input placeholder="Phone" ref="phone" type="tel" className="validate" />
-            </div>
-            <div className="col s6">
-              <input placeholder="Website" ref="website" type="text" className="validate" />
-            </div>
-          </div>
-          <div className="row">
-            <div className="col s6">
-              <input placeholder="Address *" ref="address" type="text" className="validate" />
-            </div>
-            <div className="col s6 health-coverage">
-              <div className="row medical" ref="medical">
-                <h6 className="option-label">Accepts Red Antler Insurance -- AETNA SILVER OA EPO 2000?</h6>
-                <input type="radio" />
-                <label onClick={this.addCoverage.bind(this, 'medical', 'yes')}>Yes</label>
-                <input type="radio" />
-                <label onClick={this.addCoverage.bind(this, 'medical', 'no')}>No</label>
-                <input type="radio" />
-                <label onClick={this.addCoverage.bind(this, 'medical', 'maybe')}>I don't know</label>
+        <div className="col s12">
+          <form onSubmit={this.startAddDoctor}>
+            <div className="row">
+              <div className="input_field col s6">
+                <input placeholder="First Name *" ref="firstName" type="text" className="validate" />
               </div>
-              <div className="row dental" ref="dentalPPO">
-                <h6 className="option-label">Accepts Red Antler Insurance -- GUARDIAN DENTAL PPO?</h6>
-                <input type="radio" />
-                <label onClick={this.addCoverage.bind(this, 'dentalPPO', 'yes')}>Yes</label>
-                <input type="radio" />
-                <label onClick={this.addCoverage.bind(this, 'dentalPPO', 'no')}>No</label>
-                <input type="radio" />
-                <label onClick={this.addCoverage.bind(this, 'dentalPPO', 'maybe')}>I don't know</label>
-              </div>
-              <div className="row dental" ref="dentalDHMO">
-                <h6 className="option-label">Accepts Red Antler Insurance -- GUARDIAN DENTAL DHMO?</h6>
-                <input type="radio" />
-                <label onClick={this.addCoverage.bind(this, 'dentalDHMO', 'yes')}>Yes</label>
-                <input type="radio" />
-                <label onClick={this.addCoverage.bind(this, 'dentalDHMO', 'no')}>No</label>
-                <input type="radio" />
-                <label onClick={this.addCoverage.bind(this, 'dentalDHMO', 'maybe')}>I don't know</label>
-              </div>
-              <div className="row vision" ref="vision">
-                <h6 className="option-label">Accepts Red Antler Insurance -- EYEMED VISION PPO?</h6>
-                <input type="radio" />
-                <label onClick={this.addCoverage.bind(this, 'vision', 'yes')}>Yes</label>
-                <input type="radio" />
-                <label onClick={this.addCoverage.bind(this, 'vision', 'no')}>No</label>
-                <input type="radio" />
-                <label onClick={this.addCoverage.bind(this, 'vision', 'maybe')}>I don't know</label>
+              <div className="input-field col s6">
+                <input placeholder="Last Name *" ref="lastName" type="text" className="validate" />
               </div>
             </div>
-          </div>
-          <div className="row">
-            <div className="col s12">
-              <textarea placeholder="Notes" ref="notes" type="textarea" className="validate materialize-textarea" />
+            <div className="row">
+              <div className="input-field col s6">
+                <input placeholder="Name of Practice" ref="practiceName" type="text" className="validate" />
+              </div>
+              <div className="input-field col s6">
+                <SpecialtySelect sendSpecialty={this.addSpecialty}/>
+              </div>
             </div>
-          </div>
-          <div className="row">
-            <div className="col s12">
-              <label className="error-msg">* = required</label>
-              <button type='submit' className='btn right'>Submit</button>
-              <div className='btn right cancel' onClick={this.toggleForm}>Cancel</div>
+            <div className="row">
+              <div className="col s6">
+                <input placeholder="Phone" ref="phone" type="tel" className="validate" />
+              </div>
+              <div className="col s6">
+                <input placeholder="Website" ref="website" type="text" className="validate" />
+              </div>
             </div>
-          </div>
-        </form>
+            <div className="row">
+              <div className="col s6">
+                <input placeholder="Address *" ref="address" type="text" className="validate" />
+              </div>
+              <div className="col s6 health-coverage">
+                <div className="row medical" ref="medical">
+                  <h6 className="option-label">Accepts Red Antler Insurance -- AETNA SILVER OA EPO 2000?</h6>
+                  <input type="radio" />
+                  <label onClick={this.addCoverage.bind(this, 'medical', 'yes')}>Yes</label>
+                  <input type="radio" />
+                  <label onClick={this.addCoverage.bind(this, 'medical', 'no')}>No</label>
+                  <input type="radio" />
+                  <label onClick={this.addCoverage.bind(this, 'medical', 'maybe')}>I don't know</label>
+                </div>
+                <div className="row dental" ref="dentalPPO">
+                  <h6 className="option-label">Accepts Red Antler Insurance -- GUARDIAN DENTAL PPO?</h6>
+                  <input type="radio" />
+                  <label onClick={this.addCoverage.bind(this, 'dentalPPO', 'yes')}>Yes</label>
+                  <input type="radio" />
+                  <label onClick={this.addCoverage.bind(this, 'dentalPPO', 'no')}>No</label>
+                  <input type="radio" />
+                  <label onClick={this.addCoverage.bind(this, 'dentalPPO', 'maybe')}>I don't know</label>
+                </div>
+                <div className="row dental" ref="dentalDHMO">
+                  <h6 className="option-label">Accepts Red Antler Insurance -- GUARDIAN DENTAL DHMO?</h6>
+                  <input type="radio" />
+                  <label onClick={this.addCoverage.bind(this, 'dentalDHMO', 'yes')}>Yes</label>
+                  <input type="radio" />
+                  <label onClick={this.addCoverage.bind(this, 'dentalDHMO', 'no')}>No</label>
+                  <input type="radio" />
+                  <label onClick={this.addCoverage.bind(this, 'dentalDHMO', 'maybe')}>I don't know</label>
+                </div>
+                <div className="row vision" ref="vision">
+                  <h6 className="option-label">Accepts Red Antler Insurance -- EYEMED VISION PPO?</h6>
+                  <input type="radio" />
+                  <label onClick={this.addCoverage.bind(this, 'vision', 'yes')}>Yes</label>
+                  <input type="radio" />
+                  <label onClick={this.addCoverage.bind(this, 'vision', 'no')}>No</label>
+                  <input type="radio" />
+                  <label onClick={this.addCoverage.bind(this, 'vision', 'maybe')}>I don't know</label>
+                </div>
+              </div>
+            </div>
+            <div className="row">
+              <div className="col s12">
+                <textarea placeholder="Notes" ref="notes" type="textarea" className="validate materialize-textarea" />
+              </div>
+            </div>
+            <div className="row">
+              <div className="col s12">
+                <label className="error-msg">* = required</label>
+                <button type='submit' className='btn right'>Submit</button>
+                <div className='btn right cancel' onClick={this.toggleForm}>Cancel</div>
+              </div>
+            </div>
+          </form>
+        </div>
       </div>
     )
   }

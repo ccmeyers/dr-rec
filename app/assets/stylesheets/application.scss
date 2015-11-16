@@ -1,6 +1,8 @@
 @import 'materialize';
+@import './includes/fonts';
 @import './includes/variables';
 @import './includes/header';
+@import './includes/hero';
 @import './includes/dropdown';
 @import './includes/form';
 @import './includes/doctor-details';
@@ -10,13 +12,18 @@
 @import './includes/upvote';
 @import './includes/filters';
 
-.btn {
-  background-color: $blue;
-  opacity: 1;
-  @include transition(all 0.25s ease-in-out);
-
-  &:hover {
+body {
+  font-family: 'Sailec';
+  font-weight: 500;
+  
+  .btn {
     background-color: $blue;
-    opacity: 0.9;
+    opacity: 1;
+    @include transition(all 0.25s ease-in-out);
+
+    &:hover {
+      background-color: $blue;
+      opacity: 0.9;
+    }
   }
 }
