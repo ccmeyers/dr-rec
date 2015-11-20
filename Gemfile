@@ -36,6 +36,7 @@ gem 'materialize-sass'
 
 gem 'omniauth-google-oauth2'
 gem 'figaro'
+gem 'devise'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
