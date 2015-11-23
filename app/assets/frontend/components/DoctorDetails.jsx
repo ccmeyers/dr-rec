@@ -54,7 +54,7 @@ var DoctorDetails = React.createClass({
           <a href={websiteUrl} target="_blank"><h6 className="website">{rawWebsite}</h6></a>
           <h6 className="phone">{this.props.phone}</h6>
           <h6 className="address">{this.props.address}</h6>
-          <Upvote upvotes={this.props.upvotes} id={this.props.id} />
+          <Upvote upvotes={this.props.upvotes} id={this.props.id} doctorCreatedBy={this.props.user_id} />
         </div>
         <div className="col s6">
           <h6>Takes Red Antler Insurance?</h6>

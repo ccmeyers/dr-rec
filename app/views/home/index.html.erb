@@ -1,5 +1,5 @@
 <% if user_signed_in? %>
-  <div id="react"></div>
+  <div id="react" data-user-id="<%= current_user.id %>"></div>
 <% else %>
   <%= link_to "Sign in with Google", user_omniauth_authorize_path(:google_oauth2) %>
 <% end %>

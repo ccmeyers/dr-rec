@@ -6,7 +6,8 @@ var Upvote = React.createClass({
   getInitialState: function() {
     return {
       id: this.props.id,
-      upvotes: this.props.upvotes
+      upvotes: this.props.upvotes,
+      doctorCreatedBy: this.props.doctorCreatedBy
     }
   },
   handleUpvote: function(e) {
@@ -24,6 +25,10 @@ var Upvote = React.createClass({
     if (this.props.upvotes === 0) {
       var thumb = this.refs.currentUpvotes.getDOMNode();
       $(thumb).hide();
+    }
+    if (this.state.doctorCreatedBy === $('div[data-user-id]').data().userId) {
+      var upvoteCta = this.refs.upvoteCta.getDOMNode();
+      $(upvoteCta).hide();
     }
   },
   render: function() {
@@ -50,7 +55,7 @@ var Upvote = React.createClass({
           </svg>
           <div className="upvote-num">({this.props.upvotes})</div>
         </div>
-        <a href="" onClick={this.handleUpvote}>Upvote This Doctor</a>
+        <a href="" onClick={this.handleUpvote} ref="upvoteCta">Upvote This Doctor</a>
       </div>
     )
   }
