@@ -7,7 +7,7 @@ var EditDoctor = require('./EditDoctor.jsx')
 var DoctorsList = React.createClass({
   render: function() {
     var doctorDetails = this.props.doctors.map(function(doctor){
-      return <DoctorDetails key={doctor.id} {...doctor}/>
+      return <DoctorDetails key={doctor.id} {...doctor} />
     });
     var editDoctor = this.props.doctors.map(function(doctor){
       return <EditDoctor key={doctor.id} {...doctor}/>

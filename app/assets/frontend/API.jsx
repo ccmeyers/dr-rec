@@ -13,6 +13,18 @@ var API = {
       }.bind(this)
     });
   },
+  getAllUpvotes() {
+    $.ajax({
+      type: 'GET',
+      url:'/upvotes',
+      success: function(rawUpvotes) {
+        ServerActions.receivedUpvotes(rawUpvotes);
+      }.bind(this),
+      error: function(xhr, status, err) {
+        console.error(this.props.url, status, err.toString());
+      }.bind(this)
+    });
+  },
   createDoctor(drObj) {
     $.ajax({
       type: 'POST',

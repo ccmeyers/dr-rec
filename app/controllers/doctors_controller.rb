@@ -12,6 +12,7 @@ class DoctorsController < ApplicationController
   def update
     doctor = Doctor.find(params[:id])
     if params[:num]
+      upvote = Upvote.create(doctor_id: doctor.id, user_id: current_user.id)
       doctor.upvotes = params[:num]
       doctor.save
       render json: doctor

@@ -8,6 +8,12 @@ var ServerActions = {
       rawDoctors: rawDoctors
     })
   },
+  receivedUpvotes(rawUpvotes) {
+    AppDispatcher.dispatch({
+      actionType: ActionTypes.RECEIVED_UPVOTES,
+      rawUpvotes: rawUpvotes
+    })
+  },
   receivedOneDoctor(rawDoctor) {
     AppDispatcher.dispatch({
       actionType: ActionTypes.RECEIVED_ONE_DOCTOR,

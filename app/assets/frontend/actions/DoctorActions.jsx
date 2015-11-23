@@ -4,6 +4,9 @@ var DoctorActions = {
   getAllDoctors() {
     API.getAllDoctors();
   },
+  getAllUpvotes() {
+    API.getAllUpvotes();
+  },
   sendDoc(drObj) {
     API.createDoctor(drObj);
   },

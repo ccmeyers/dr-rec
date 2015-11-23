@@ -4,6 +4,7 @@ var Hero = require('./components/Hero.jsx');
 var AddDoc = require('./components/AddDoc.jsx');
 var DoctorsList = require('./components/DoctorsList.jsx');
 var DoctorStore = require('./stores/DoctorStore.jsx');
+var UpvoteStore = require('./stores/UpvoteStore.jsx');
 var DoctorMap = require('./components/DoctorMap.jsx');
 var FilterSelect = require('./components/FilterSelect.jsx');
 
@@ -12,19 +13,31 @@ var DoctorActions = require('./actions/DoctorActions.jsx');
 var Main = React.createClass({
   getInitialState: function(){
     return {
-      doctorsList: DoctorStore.getAll()
+      doctorsList: DoctorStore.getAll(),
+      upvotes: UpvoteStore.getAll()
     }
   },
   componentDidMount: function() {
     DoctorActions.getAllDoctors();
     DoctorStore.addChangeListener(this._onChange);
+    DoctorActions.getAllUpvotes();
+    UpvoteStore.addChangeListener(this._onChange);
+    var alreadyUpvoted = this.state.upvotes;
+    console.log('alreadyUpvoted', alreadyUpvoted);
+    alreadyUpvoted.forEach(function(doctorId) {
+      console.log('doctorId', doctorId);
+      console.log('a link', $('#details-'+doctorId+' .upvote a'));
+      $('#details-'+doctorId+' .upvote a').hide();
+    });
   },
   componentWillUnmount: function() {
     DoctorStore.removeChangeListener(this._onChange);
+    UpvoteStore.removeChangeListener(this._onChange);
   },
   _onChange: function() {
     this.setState({
-      doctorsList: DoctorStore.getAll()
+      doctorsList: DoctorStore.getAll(),
+      upvotes: UpvoteStore.getAll()
     });
   },
   filterSpecialty: function(specialtySlug) {
@@ -74,7 +87,7 @@ var Main = React.createClass({
             <FilterSelect  filterSpecialty={this.filterSpecialty}/>
             <AddDoc />
           </div>
-          <DoctorsList doctors={this.state.doctorsList} />
+          <DoctorsList doctors={this.state.doctorsList} upvotes={this.state.upvotes} />
         </div>
       </div>
     )
