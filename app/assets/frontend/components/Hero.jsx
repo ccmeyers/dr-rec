@@ -5,9 +5,9 @@ var Hero = React.createClass({
     return (
       <div className="hero">
         <div className="container">
-          <h1>Keep those antlers healthy.</h1>
-          <h6>Find and share great doctors in our health plans with your fellow Antlerists.</h6>
-          <h6>All recommendations are always anonymous.</h6>
+          <h1>DrRec Demo.</h1>
+          <h6>This is a demo of an internal app I built with React, Flux, and Rails for company employees to recommend doctors to each other.</h6>
+          <h6>The real app has an additional layer of authentication</h6>
         </div>
       </div>
     )

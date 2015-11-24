@@ -29,9 +29,6 @@ var Header = React.createClass({
               </svg>
             </div>
             <div className="col s10 nav-right">
-              <li><a href="http://directory.redantler.com/directory">DIRECTORY</a></li>
-              <li><a href="http://directory.redantler.com/submit-ticket">IT TICKETS</a></li>
-              <li><a href="http://directory.redantler.com/books">BOOK CLUB</a></li>
               <li><a href="">DOCTOR RECOMMENDATIONS</a></li>
             </div>
           </div>
