@@ -20,7 +20,6 @@ var Upvote = React.createClass({
     DoctorActions.upvote(newVote);
     var thumb = this.refs.currentUpvotes.getDOMNode();
     $(thumb).show();
-    console.log('this.refs', this.refs.upvoteCta.getDOMNode());
     var upvoteCta = this.refs.upvoteCta.getDOMNode();
     $(upvoteCta).addClass('disable').append("<i>You've already upvoted this doctor</i>");
   },

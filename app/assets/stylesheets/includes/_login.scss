@@ -1,0 +1,24 @@
+.login {
+  padding: 80px 0;
+
+  .card {
+    box-shadow: none;
+
+    &-content {
+      padding: 10px 0 30px;
+      border-bottom: 1px solid rgba(160, 160, 160, 0.2);
+
+      .card-title {
+        color: #333333;
+        font-size: 18px;
+        font-weight: 700;
+        line-height: 1;
+      }
+
+      p {
+        color: #707778;
+        font-size: 15px;
+      }
+    }
+  }
+}
