@@ -88,18 +88,21 @@ var AddDoc = React.createClass({
       $('.add-doctor .Dropdown-control').removeClass('error');
     }
   },
-  getLatLng: function(address) {
+  getLatLng: function(address_value) {
     var that = this;
+    var address = this.refs.address.getDOMNode();
     var geocoder = new google.maps.Geocoder();
-    geocoder.geocode({ 'address': address }, function (results, status) {
+    geocoder.geocode({ 'address': address_value }, function (results, status) {
      if (status == google.maps.GeocoderStatus.OK) {
-        that.setState({ latitude: results[0].geometry.location.lat() });
-        that.setState({ longitude: results[0].geometry.location.lng() });
-        that.finishAddDoctor();
-        that.toggleForm();
+      that.setState({ latitude: results[0].geometry.location.lat() });
+      that.setState({ longitude: results[0].geometry.location.lng() });
+      that.finishAddDoctor();
+      that.toggleForm();
      }
      else {
-        console.log("Geocoding failed: " + status);
+      console.log("Geocoding failed: " + status);
+      $('.error-msg').text('Please enter a valid address.').addClass('error');
+      $(address).addClass('error');
      }
     });
   },
