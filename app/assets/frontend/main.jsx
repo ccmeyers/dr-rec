@@ -7,7 +7,6 @@ var DoctorStore = require('./stores/DoctorStore.jsx');
 var UpvoteStore = require('./stores/UpvoteStore.jsx');
 var DoctorMap = require('./components/DoctorMap.jsx');
 var FilterSelect = require('./components/FilterSelect.jsx');
-
 var DoctorActions = require('./actions/DoctorActions.jsx');
 
 var Main = React.createClass({
@@ -22,13 +21,20 @@ var Main = React.createClass({
     DoctorStore.addChangeListener(this._onChange);
     DoctorActions.getAllUpvotes();
     UpvoteStore.addChangeListener(this._onChange);
+    this.hideAlreadyUpvoted();
+  },
+  hideAlreadyUpvoted: function() {
+    var that = this;
     var alreadyUpvoted = this.state.upvotes;
-    console.log('alreadyUpvoted', alreadyUpvoted);
-    alreadyUpvoted.forEach(function(doctorId) {
-      console.log('doctorId', doctorId);
-      console.log('a link', $('#details-'+doctorId+' .upvote a'));
-      $('#details-'+doctorId+' .upvote a').hide();
-    });
+    if (alreadyUpvoted.length > 0) {
+      var idArray = [];
+      alreadyUpvoted.forEach(function(obj) {
+        var doctorId = obj.doctor_id
+        $('#details-'+doctorId+' .upvote a').addClass('disable').append("<i>You've already upvoted this doctor</i>");
+      });
+    } else {
+      setTimeout(that.hideAlreadyUpvoted, 1000);
+    }
   },
   componentWillUnmount: function() {
     DoctorStore.removeChangeListener(this._onChange);
@@ -87,7 +93,7 @@ var Main = React.createClass({
             <FilterSelect  filterSpecialty={this.filterSpecialty}/>
             <AddDoc />
           </div>
-          <DoctorsList doctors={this.state.doctorsList} upvotes={this.state.upvotes} />
+          <DoctorsList doctors={this.state.doctorsList} />
         </div>
       </div>
     )

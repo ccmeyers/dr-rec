@@ -25,10 +25,7 @@ var UpvoteStore = objectAssign({}, EvenEmitter.prototype, {
 AppDispatcher.register(function(action){
   switch (action.actionType) {
     case ActionTypes.RECEIVED_UPVOTES:
-      var upvotesArray = action.rawUpvotes;
-      upvotesArray.map(function(obj) {
-        _upvotes.push(obj.doctor_id);
-      });
+      _upvotes = action.rawUpvotes;
       UpvoteStore.emitChange();
       break;
     default:
