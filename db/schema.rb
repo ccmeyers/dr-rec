@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151123193623) do
+ActiveRecord::Schema.define(version: 20160401203115) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -36,6 +36,13 @@ ActiveRecord::Schema.define(version: 20151123193623) do
     t.string   "guardian_ppo"
     t.string   "guardian_dhmo"
     t.integer  "user_id"
+    t.string   "aetna_a3"
+    t.string   "aetna_c1"
+    t.string   "aetna_c3"
+    t.string   "vision"
+    t.string   "vision_plus"
+    t.string   "dental_dmo"
+    t.string   "dental_plus"
   end
 
   create_table "upvotes", force: :cascade do |t|
