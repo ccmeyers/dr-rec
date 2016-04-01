@@ -4,22 +4,31 @@ var DeleteDoctor = require('./DeleteDoctor.jsx')
 
 var DoctorDetails = React.createClass({
   componentDidMount: function() {
-    var medical = this.refs.medical.getDOMNode();
-    var dentalppo = this.refs.dentalppo.getDOMNode();
-    var dentaldhmo = this.refs.dentaldhmo.getDOMNode();
-    var vision = this.refs.vision.getDOMNode();
+    var dentalPlus = this.refs.dentalPlus.getDOMNode(),
+        dentalDMO = this.refs.dentalDMO.getDOMNode(),
+        aetnaA3 = this.refs.aetnaA3.getDOMNode(),
+        aetnaC1 = this.refs.aetnaC1.getDOMNode(),
+        aetnaC3 = this.refs.aetnaC3.getDOMNode(),
+        vision = this.refs.vision.getDOMNode(),
+        visionPlus = this.refs.visionPlus.getDOMNode();
 
     if (this.props.specialty_slug === 'dentist') {
-      $(medical).hide();
+      $(aetnaA3).hide();
+      $(aetnaC1).hide();
+      $(aetnaC3).hide();
       $(vision).hide();
+      $(visionPlus).hide();
     } else if (this.props.specialty_slug === 'eye-doctor') {
-      $(medical).hide();
-      $(dentalppo).hide();
-      $(dentaldhmo).hide();
+      $(aetnaA3).hide();
+      $(aetnaC1).hide();
+      $(aetnaC3).hide();
+      $(dentalPlus).hide();
+      $(dentalDMO).hide();
     } else {
-      $(dentalppo).hide();
-      $(dentaldhmo).hide();
+      $(dentalPlus).hide();
+      $(dentalDMO).hide();
       $(vision).hide();
+      $(visionPlus).hide();
     }
   },
   toggleEditForm: function() {
@@ -36,6 +45,7 @@ var DoctorDetails = React.createClass({
     $(doctorDetailsCard).removeClass('shown').addClass('hidden');
   },
   render: function() {
+    console.log('props: ', this.props);
     var detailsId = "details-"+this.props.id;
     var editId = "edit-"+this.props.id;
     var rawWebsite = this.props.website;
@@ -58,10 +68,13 @@ var DoctorDetails = React.createClass({
         </div>
         <div className="col s6">
           <h6>Takes Red Antler Insurance?</h6>
-          <h6 className="coverage" ref="medical"><label>AETNA SILVER OA EPO 2000:</label> {this.props.aetna_oaepo_silver_2000} </h6>
-          <h6 className="coverage" ref="dentalppo"><label>GUARDIAN DENTAL PPO:</label> {this.props.guardian_ppo} </h6>
-          <h6 className="coverage" ref="dentaldhmo"><label>GUARDIAN DENTAL DHMO:</label> {this.props.guardian_dhmo} </h6>
-          <h6 className="coverage" ref="vision"><label>EYEMED VISION PPO:</label> {this.props.eyemed_ppo} </h6>
+          <h6 className="coverage" ref="aetnaA3"><label>AETNA A3:</label> {this.props.aetna_a3} </h6>
+          <h6 className="coverage" ref="aetnaC1"><label>AETNA C1:</label> {this.props.aetna_c1} </h6>
+          <h6 className="coverage" ref="aetnaC3"><label>AETNA C3:</label> {this.props.aetna_c3} </h6>
+          <h6 className="coverage" ref="dentalPlus"><label>DENTAL +:</label> {this.props.dental_plus} </h6>
+          <h6 className="coverage" ref="dentalDMO"><label>DENTAL DMO:</label> {this.props.dental_dmo} </h6>
+          <h6 className="coverage" ref="visionPlus"><label>VISION +:</label> {this.props.vision_plus} </h6>
+          <h6 className="coverage" ref="vision"><label>VISION:</label> {this.props.vision} </h6>
           <p className="notes"><label>Notes: </label>{this.props.notes}</p>
           <div className="edit-toggle" onClick={this.toggleEditForm}>Edit</div>
           <DeleteDoctor id={this.props.id}/>
